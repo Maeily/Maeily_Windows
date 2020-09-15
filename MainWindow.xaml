@@ -7,5 +7,16 @@
         mc:Ignorable="d"
         Title="Maeily" Height="550" Width="412" ResizeMode="NoResize">
     <Grid>
+        <TabControl x:Name="Tab">
+            <TabItem Header="프로필">
+                <Frame Source="" NavigationUIVisibility="Hidden" />
+            </TabItem>
+            <TabItem Header="채널">
+                <Frame Source="" NavigationUIVisibility="Hidden" />
+            </TabItem>
+            <TabItem Header="급식">
+                <Frame Source="" NavigationUIVisibility="Hidden" />
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>
