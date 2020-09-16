@@ -6,6 +6,34 @@
         xmlns:local="clr-namespace:Maeily_Windows"
         mc:Ignorable="d"
         Title="Maeily" Height="550" Width="412" ResizeMode="NoResize">
-    <Grid>
+    <Window.Resources>
+        <Style TargetType="Label">
+            <Setter Property="Margin" Value="7,4" />
+            <Setter Property="FontSize" Value="18" />
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Margin" Value="15,4" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="FontSize" Value="23" />
+            <Setter Property="Foreground" Value="Gray" />
+        </Style>
+        <Style TargetType="Line">
+            <Setter Property="Margin" Value="10" />
+            <Setter Property="X1" Value="3" />
+            <Setter Property="X2" Value="352" />
+            <Setter Property="Stroke" Value="Black" />
+            <Setter Property="StrokeThickness" Value="2" />
+        </Style>
+    </Window.Resources>
+    <Grid Margin="15">
+        <StackPanel Margin="0,50">
+            <Label Content="아이디" />
+            <TextBox Text="아이디를 입력해주세요" MouseDown="TextBox_MouseDown" KeyDown="TextBox_KeyDown" MouseUp="TextBox_MouseUp" />
+            <Line />
+            <Label Content="비밀번호" />
+            <TextBox Text="비밀번호를 입력해주세요" MouseDown="TextBox_MouseDown" KeyDown="TextBox_KeyDown" MouseUp="TextBox_MouseUp" />
+            <Line />
+            <Button Margin="0,20" Height="60" Width="349" Background="#e0e0e0" BorderThickness="0" Content="제출" />
+        </StackPanel>
     </Grid>
 </Window>
