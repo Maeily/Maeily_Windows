@@ -5,8 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Maeily_Windows"
         mc:Ignorable="d"
-        Title="Widget" Height="200" Width="500" ResizeMode="NoResize" WindowStyle="None" AllowsTransparency="True" Background="Black" Opacity="0.4">
-    <Grid>
-        <TextBlock Foreground="White" Opacity="0.7" Background="Transparent" FontWeight="Bold" FontSize="24">aaaaaaa</TextBlock>
-    </Grid>
+        Title="Widget" Height="150" Width="500" ResizeMode="NoResize" WindowStyle="None" AllowsTransparency="True" Background="Black" Opacity="0.4">
+    <StackPanel Margin="10">
+        <StackPanel Margin="10" Orientation="Horizontal">
+            <TextBlock FontWeight="Bold" FontSize="40" Foreground="White">오늘 할 일</TextBlock>
+            <TextBlock x:Name="TxBTodayDate" Foreground="White" Opacity="0.5" FontSize="25" Margin="15, 15, 0, 0" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="10">
+            <TextBlock x:Name="TxBTodaySchedule" Foreground="White" FontSize="15" />
+        </StackPanel>
+    </StackPanel>
 </Window>

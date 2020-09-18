@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 
 namespace Maeily_Windows
 {
@@ -19,6 +20,9 @@ namespace Maeily_Windows
             InitOnDisplaySettingChanged();
             ShowOnWorkerW();
             FillDisplay();
+
+            TxBTodayDate.Text = DateTime.UtcNow.ToString("MM월 dd일 dddd");
+            TxBTodaySchedule.Text = "밥 먹기";
         }
     }
 }
