@@ -5,7 +5,59 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Maeily_Windows"
         mc:Ignorable="d"
-        Title="Maeily" Height="550" Width="412">
+        Title="Maeily" Height="550" Width="412" ResizeMode="NoResize">
+    <Window.Resources>
+        <Style x:Key="PwdStyle" TargetType="PasswordBox">
+            <Setter Property="Width" Value="180" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="Width" Value="320" />
+            <Setter Property="Height" Value="25" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+        </Style>
+        <Style TargetType="Line">
+            <Setter Property="Margin" Value="5" />
+            <Setter Property="X1" Value="3" />
+            <Setter Property="X2" Value="352" />
+            <Setter Property="StrokeThickness" Value="3" />
+            <Setter Property="Stroke" Value="Black" />
+        </Style>
+        <Style TargetType="CheckBox">
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+    </Window.Resources>
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Image Grid.Row="0" Width="90" Height="90" x:Name="ImgProfile" />
+        <StackPanel Margin="15" Grid.Row="1">
+            <Border BorderBrush="#5E5E5E" BorderThickness="3" CornerRadius="15">
+                <StackPanel Margin="10" HorizontalAlignment="Center">
+                    <Label Margin="10" FontWeight="Bold" FontSize="25">비밀번호 변경</Label>
+                    <Label>현재 비밀번호</Label>
+                    <PasswordBox x:Name="PwbNowPwd" Style="{StaticResource PwdStyle}" />
+                    <Line />
+                    <Label>변경할 비밀번호</Label>
+                    <PasswordBox x:Name="PwbNewPwdFirst" Style="{StaticResource PwdStyle}" />
+                    <Line />
+                    <Label>변경할 비밀번호 다시 입력</Label>
+                    <PasswordBox x:Name="PwbNewPwdLast" Style="{StaticResource PwdStyle}" />
+                    <Line />
+                    <Button x:Name="BtnSubmit" Width="315" Height="40" Margin="0, 5, 0, 0" FontWeight="Bold">제출</Button>
+                </StackPanel>
+            </Border>
+            <StackPanel Margin="0, 20, 0, 0" Orientation="Horizontal" HorizontalAlignment="Center">
+                <WrapPanel Margin="10, 0">
+                    <Label>다크모드 활성화</Label>
+                    <CheckBox x:Name="ChkDarkMode" />
+                </WrapPanel>
+                <WrapPanel Margin="10, 0">
+                    <Label>푸시 알림 활성화</Label>
+                    <CheckBox x:Name="ChkPushNoti" />
+                </WrapPanel>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Window>
