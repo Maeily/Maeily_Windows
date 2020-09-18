@@ -14,30 +14,12 @@ namespace Maeily_Windows
             InitializeComponent();
         }
 
-        private void TextBox_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            TextBox txtbox = sender as TextBox;
-            txtbox.SelectionStart = 0;
-        }
-
-        private void TextBox_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
-        {
-            char keyCode = (char)e.Key;
-            if (!char.IsDigit(keyCode))
+            for(int i=0; i<IdBox.Text.Length; i++)
             {
-
+                if(!char.IsDigit(IdBox.Text[i]))
             }
-
-            TextBox txtbox = sender as TextBox;
-            if (string.Compare(txtbox.Text, "아이디를 입력해주세요") == 0 || string.Compare(txtbox.Text, "비밀번호를 입력해주세요") == 0)
-            {
-                txtbox.Text = "";
-            }
-        }
-
-        private void TextBox_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-
         }
     }
 }
