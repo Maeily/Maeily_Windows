@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Maeily_Windows"
         mc:Ignorable="d"
-        Title="Widget" Height="550" Width="412" ResizeMode="NoResize" WindowStyle="None" AllowsTransparency="True">
+        Title="Widget" Height="200" Width="500" ResizeMode="NoResize" WindowStyle="None" AllowsTransparency="True" Background="Black" Opacity="0.4">
     <Grid>
+        <TextBlock Foreground="White" Opacity="0.7" Background="Transparent" FontWeight="Bold" FontSize="24">aaaaaaa</TextBlock>
     </Grid>
 </Window>
