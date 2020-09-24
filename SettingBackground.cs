@@ -94,10 +94,10 @@ namespace Maeily_Windows
         {
             var area = SystemParameters.WorkArea;
 
-            this.Top = 660;
-            this.Left = 1020;
-            this.Width = 500;
-            this.Height = 150;
+            this.Top = 450;
+            this.Left = 1160;
+            this.Width = 360;
+            this.Height = 360;
         }
 
         private void ShowOnWorkerW()
