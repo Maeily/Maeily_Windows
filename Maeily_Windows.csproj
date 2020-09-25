@@ -55,6 +55,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ChannelInfo.xaml.cs">
+      <DependentUpon>ChannelInfo.xaml</DependentUpon>
+    </Compile>
     <Compile Include="InChannel.xaml.cs">
       <DependentUpon>InChannel.xaml</DependentUpon>
     </Compile>
@@ -74,6 +77,10 @@
     <Compile Include="SettingBackground.cs">
       <DependentUpon>Widget.xaml</DependentUpon>
     </Compile>
+    <Page Include="ChannelInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="InChannel.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
