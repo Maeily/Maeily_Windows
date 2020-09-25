@@ -1,0 +1,49 @@
+﻿<Page x:Class="Maeily_Windows.Main"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Maeily_Windows"
+      mc:Ignorable="d" 
+      d:DesignHeight="550" d:DesignWidth="362"
+      Title="Main">
+    <Grid>
+        <DockPanel>
+            <StackPanel Background="#B7DE4B" Width="100" DockPanel.Dock="Left">
+                <StackPanel.Resources>
+                    <Style TargetType="Label">
+                        <Setter Property="FontSize" Value="22"/>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="FontWeight" Value="Bold"/>
+                    </Style>
+                </StackPanel.Resources>
+                <Label Content="메인" Margin="22, 40, 20, 5"/>
+                <Label Content="채널" Margin="22, 5" Foreground="White"/>
+                <Label Content="캘린더" Margin="12, 5"/>
+                <Label Content="매일리" Margin="12, 240"/>
+            </StackPanel>
+            <StackPanel>
+                <StackPanel Orientation="Horizontal" Background="#F1F1F1" Height="120">
+                    <Ellipse Width="80" Height="80" Margin="40, 5" Fill="Black"/>
+                    <Label Content="학생 정보" Margin="10, 40" FontSize="20" FontWeight="Bold"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Rectangle Fill="#F1F1F1" Height="95" Width="130" Margin="25, 20"/>
+                    <Rectangle Fill="#F1F1F1" Height="95" Width="130" Margin="10, 20"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Rectangle Fill="#F1F1F1" Height="95" Width="130" Margin="25, 0"/>
+                    <Rectangle Fill="#F1F1F1" Height="95" Width="130" Margin="10, 0"/>
+                </StackPanel>
+                <StackPanel Background="#F1F1F1" Height="150" Width="300" Margin="15">
+                    <StackPanel Orientation="Horizontal">
+                        <Polygon Margin="32, 10" Points="10,10,20,3,20,17" Fill="#B7DE4B"/>
+                        <Label Content="시간" Margin="45, 2" Foreground="#B7DE4B" FontSize="20" FontWeight="Bold"/>
+                        <Polygon Margin="15, 10" Points="10,3,10,17,20,10" Fill="#B7DE4B"/>
+                    </StackPanel>
+                    <Rectangle Fill="White" Width="220" Height="95"/>
+                </StackPanel>
+            </StackPanel>
+        </DockPanel>
+    </Grid>
+</Page>
