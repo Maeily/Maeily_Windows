@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
+using System.Windows.Navigation;
 
 namespace Maeily_Windows
 {
@@ -10,6 +12,19 @@ namespace Maeily_Windows
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void Main(object sender, RoutedEventArgs e)
+        {
+            Frame.Source = new Uri("Main.xaml", UriKind.Relative);
+        }
+
+        private void Channel(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private void Calender(object sender, RoutedEventArgs e)
+        {
         }
     }
 }

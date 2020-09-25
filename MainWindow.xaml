@@ -8,20 +8,22 @@
         Title="Maeily" Height="550" Width="412" ResizeMode="NoResize">
     <Grid>
         <DockPanel>
-            <StackPanel Background="#B7DE4B" Width="100" DockPanel.Dock="Left">
+            <StackPanel Background="#B7DE4B" Width="90" DockPanel.Dock="Left">
                 <StackPanel.Resources>
-                    <Style TargetType="Label">
+                    <Style TargetType="Button">
                         <Setter Property="FontSize" Value="22"/>
                         <Setter Property="Foreground" Value="White"/>
                         <Setter Property="FontWeight" Value="Bold"/>
+                        <Setter Property="Background" Value="#B7DE4B"/>
+                        <Setter Property="BorderThickness" Value="0"/>
                     </Style>
                 </StackPanel.Resources>
-                <Label Content="메인" Margin="22, 40, 20, 5"/>
-                <Label Content="채널" Margin="22, 5" Foreground="White"/>
-                <Label Content="캘린더" Margin="12, 5"/>
-                <Label Content="매일리" Margin="12, 240"/>
+                <Button Content="메인" Margin="22, 40, 20, 5" Click="Main"/>
+                <Button Content="채널" Margin="22, 5" Click="Channel"/>
+                <Button Content="캘린더" Margin="12, 5" Click="Calender"/>
+                <Label Content="매일리" Margin="8, 240" FontSize="22" Foreground="White" FontWeight="Bold"/>
             </StackPanel>
-            <StackPanel/>
+            <Frame Name="Frame" Source="Main.xaml"/>
         </DockPanel>
     </Grid>
 </Window>

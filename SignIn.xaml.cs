@@ -14,12 +14,6 @@ namespace Maeily_Windows
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            for(int i=0; i<IdBox.Text.Length; i++)
-            {
-                if(!char.IsDigit(IdBox.Text[i]))
-            }
-        }
+        
     }
 }

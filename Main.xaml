@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Maeily_Windows"
       mc:Ignorable="d" 
-      d:DesignHeight="550" d:DesignWidth="362"
+      d:DesignHeight="520" d:DesignWidth="362"
       Title="Main">
     <Grid>
         <DockPanel>
@@ -13,7 +13,7 @@
                 <StackPanel Orientation="Horizontal" Background="#F1F1F1" Height="120">
                     <Label Content="학생 정보" Margin="10, 40" FontSize="20" FontWeight="Bold"/>
                 </StackPanel>
-                <Grid Height="250">
+                <Grid Height="215">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
@@ -21,9 +21,9 @@
                         <RowDefinition/>
                     </Grid.RowDefinitions>
                 </Grid>
-                <StackPanel Background="#F1F1F1" Height="150" Width="300" Margin="15">
+                <StackPanel Background="#F1F1F1" Height="150" Width="280" Margin="15">
                     <StackPanel Orientation="Horizontal">
-                        <Polygon Margin="32, 10" Points="10,10,20,3,20,17" Fill="#B7DE4B"/>
+                        <Polygon Margin="25, 10" Points="10,10,20,3,20,17" Fill="#B7DE4B"/>
                         <Label Content="시간" Margin="45, 2" Foreground="#B7DE4B" FontSize="20" FontWeight="Bold"/>
                         <Polygon Margin="15, 10" Points="10,3,10,17,20,10" Fill="#B7DE4B"/>
                     </StackPanel>

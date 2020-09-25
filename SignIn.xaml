@@ -40,7 +40,7 @@
             <PasswordBox Name="PasswordBox"/>
             <Line/>
             <Button Margin="0,20" Height="60" Width="349" Background="#e0e0e0" BorderThickness="0"
-                    Content="제출" Click="Button_Click"/>
+                    Content="제출" />
         </StackPanel>
     </Grid>
 </Window>
