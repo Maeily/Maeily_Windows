@@ -9,32 +9,18 @@
       Title="Main">
     <Grid>
         <DockPanel>
-            <StackPanel Background="#B7DE4B" Width="100" DockPanel.Dock="Left">
-                <StackPanel.Resources>
-                    <Style TargetType="Label">
-                        <Setter Property="FontSize" Value="22"/>
-                        <Setter Property="Foreground" Value="White"/>
-                        <Setter Property="FontWeight" Value="Bold"/>
-                    </Style>
-                </StackPanel.Resources>
-                <Label Content="메인" Margin="22, 40, 20, 5"/>
-                <Label Content="채널" Margin="22, 5" Foreground="White"/>
-                <Label Content="캘린더" Margin="12, 5"/>
-                <Label Content="매일리" Margin="12, 240"/>
-            </StackPanel>
             <StackPanel>
                 <StackPanel Orientation="Horizontal" Background="#F1F1F1" Height="120">
-                    <Ellipse Width="80" Height="80" Margin="40, 5" Fill="Black"/>
                     <Label Content="학생 정보" Margin="10, 40" FontSize="20" FontWeight="Bold"/>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <Rectangle Fill="#F1F1F1" Height="95" Width="130" Margin="25, 20"/>
-                    <Rectangle Fill="#F1F1F1" Height="95" Width="130" Margin="10, 20"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <Rectangle Fill="#F1F1F1" Height="95" Width="130" Margin="25, 0"/>
-                    <Rectangle Fill="#F1F1F1" Height="95" Width="130" Margin="10, 0"/>
-                </StackPanel>
+                <Grid Height="250">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                </Grid>
                 <StackPanel Background="#F1F1F1" Height="150" Width="300" Margin="15">
                     <StackPanel Orientation="Horizontal">
                         <Polygon Margin="32, 10" Points="10,10,20,3,20,17" Fill="#B7DE4B"/>
