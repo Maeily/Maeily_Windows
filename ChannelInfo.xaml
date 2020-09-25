@@ -1,0 +1,57 @@
+﻿<Page x:Class="Maeily_Windows.ChannelInfo"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:Maeily_Windows"
+      mc:Ignorable="d"
+      d:DesignHeight="520" d:DesignWidth="362"
+      Title="ChannelInfo">
+    <Page.Resources>
+        <Style TargetType="TextBox">
+            <Setter Property="Background" Value="#F1F1F1" />
+            <Setter Property="BorderBrush" Value="#F1F1F1" />
+            <Style.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="15" />
+                </Style>
+            </Style.Resources>
+        </Style>
+    </Page.Resources>
+    <StackPanel>
+        <TextBox x:Name="TbSearch" Width="290" Height="40" Margin="0, 20" />
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60" />
+                <RowDefinition Height="320" />
+                <RowDefinition Height="60" />
+            </Grid.RowDefinitions>
+            <Polygon Points="16, 0 0, 10, 16, 20" Stroke="#B7DE4B" Fill="#B7DE4B"
+                 Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"
+                 RenderTransformOrigin="0.5,0.5" Grid.Row="0">
+                <Polygon.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform />
+                        <SkewTransform />
+                        <RotateTransform Angle="90" />
+                        <TranslateTransform />
+                    </TransformGroup>
+                </Polygon.RenderTransform>
+            </Polygon>
+            <StackPanel Margin="10" x:Name="SpUserlist">
+            </StackPanel>
+            <Polygon Points="16, 0 0, 10, 16, 20" Stroke="#B7DE4B" Fill="#B7DE4B"
+                 Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"
+                 RenderTransformOrigin="0.5,0.5" Grid.Row="2">
+                <Polygon.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform />
+                        <SkewTransform />
+                        <RotateTransform Angle="-90" />
+                        <TranslateTransform />
+                    </TransformGroup>
+                </Polygon.RenderTransform>
+            </Polygon>
+        </Grid>
+    </StackPanel>
+</Page>
