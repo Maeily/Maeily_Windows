@@ -56,6 +56,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Calendar.xaml.cs">
+      <DependentUpon>Calendar.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ChannelInfo.xaml.cs">
       <DependentUpon>ChannelInfo.xaml</DependentUpon>
     </Compile>
@@ -78,6 +81,10 @@
     <Compile Include="SettingBackground.cs">
       <DependentUpon>Widget.xaml</DependentUpon>
     </Compile>
+    <Page Include="Calendar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="ChannelInfo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
