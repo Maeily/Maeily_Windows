@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:Maeily_Windows"
       mc:Ignorable="d"
-      d:DesignHeight="520" d:DesignWidth="362"
+      d:DesignHeight="520" d:DesignWidth="312"
       Title="InChannel">
     <Page.Resources>
         <Style TargetType="TextBox">
@@ -19,7 +19,7 @@
         </Style>
     </Page.Resources>
     <StackPanel>
-        <TextBox x:Name="TbSearch" Width="290" Height="40" Margin="0, 20, 0, 0" />
+        <TextBox x:Name="TbSearch" Width="250" Height="25" Padding="10, 2, 10, 0" Margin="0, 20, 0, 0" />
         <Label FontSize="15" HorizontalAlignment="Right"
                VerticalAlignment="Bottom" Margin="0, 30, 10, 0">채널 정보</Label>
         <Grid Margin="10">
@@ -32,18 +32,18 @@
             </Grid.ColumnDefinitions>
             <Polygon Points="16, 0 0, 10, 16, 20" Stroke="#B7DE4B" Fill="#B7DE4B" Margin="0, 0, 0, 5"
                      Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Bottom" />
-            <Label x:Name="LbLeftDate" FontSize="30" Foreground="#767676"
+            <Label x:Name="LbLeftDate" FontSize="20" Foreground="#767676"
                    HorizontalAlignment="Center" VerticalAlignment="Bottom"
                    Grid.Column="1" Margin="0, 0, 0, 5">20일</Label>
             <Label Name="LbMiddleDate" FontWeight="Bold" Foreground="Black"
-                   HorizontalAlignment="Center" FontSize="50" Grid.Column="2">21일</Label>
-            <Label x:Name="LbRightDate" FontSize="30" Foreground="#767676"
+                   HorizontalAlignment="Center" FontSize="40" Grid.Column="2">21일</Label>
+            <Label x:Name="LbRightDate" FontSize="20" Foreground="#767676"
                    HorizontalAlignment="Center" VerticalAlignment="Bottom"
                    Grid.Column="3" Margin="0, 0, 0, 5">22일</Label>
             <Polygon Points="0, 0 16, 10, 0, 20" Stroke="#B7DE4B" Fill="#B7DE4B" Margin="0, 0, 0, 5"
                      Grid.Column="4" HorizontalAlignment="Center" VerticalAlignment="Bottom" />
         </Grid>
-        <Line X1="30" X2="332" Stroke="Black" StrokeThickness="2" />
+        <Line X1="30" X2="282" Stroke="Black" StrokeThickness="2" />
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="300" />
