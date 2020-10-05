@@ -38,7 +38,7 @@
                     </TransformGroup>
                 </Polygon.RenderTransform>
             </Polygon>
-            <StackPanel Margin="10" x:Name="SpUserlist">
+            <StackPanel Margin="10" x:Name="Userlist" Grid.Row="1">
             </StackPanel>
             <Polygon Points="16, 0 0, 10, 16, 20" Stroke="#B7DE4B" Fill="#B7DE4B"
                  Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"
