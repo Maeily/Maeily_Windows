@@ -20,9 +20,65 @@ namespace Maeily_Windows
     /// </summary>
     public partial class InChannel : Page
     {
+        List<StackPanel> Calendars = new List<StackPanel>();
+        DateTime dateTime = DateTime.UtcNow;
         public InChannel()
         {
             InitializeComponent();
+            Loaded += new RoutedEventHandler(InChannel_Loaded);
+            BtnLeft.Click += new RoutedEventHandler(ChangeDate);
+            BtnRight.Click += new RoutedEventHandler(ChangeDate);
         }
+
+        private void ChangeDate(object sender, RoutedEventArgs args)
+        {
+            if ((sender as Button).Tag.Equals("Left"))
+            {
+                dateTime = dateTime.AddDays(-1);
+            } else
+            {
+                dateTime = dateTime.AddDays(1);
+            }
+            RefreshDate();
+        }
+
+        private void RefreshDate()
+        {
+            LbLeftDate.Content = dateTime.AddDays(-1).Day.ToString() + "일";
+            LbMiddleDate.Content = dateTime.Day.ToString() + "일";
+            LbRightDate.Content = dateTime.AddDays(1).Day.ToString() + "일";
+        }
+
+        private void InChannel_Loaded(object sender, RoutedEventArgs args)
+        {
+            AddCalendar("dwada");
+            RefreshDate();
+        }
+
+        private void AddCalendar(string data)
+        {
+            StackPanel stackPanel = new StackPanel()
+            {
+                Orientation = Orientation.Horizontal,
+                HorizontalAlignment = HorizontalAlignment.Center,
+                VerticalAlignment = VerticalAlignment.Center,
+                Margin = new Thickness(10)
+            };
+            Rectangle rectangle = new Rectangle();
+            rectangle.Width = 10;
+            rectangle.Height = 10;
+            rectangle.Margin = new Thickness(60, 0, 0, 0);
+            rectangle.Fill = Brushes.Black;
+            TextBlock textBlock = new TextBlock() { 
+                VerticalAlignment = VerticalAlignment.Center,
+                Margin = new Thickness(10, 0, 0, 0),
+                Text = data
+            };
+            stackPanel.Children.Add(rectangle);
+            stackPanel.Children.Add(textBlock);
+            Calendars.Add(stackPanel);
+            CalendarList.ItemsSource = Calendars;
+            CalendarList.Items.Refresh();
+        } 
     }
 }
