@@ -8,8 +8,9 @@
       d:DesignHeight="520" d:DesignWidth="312"
       Title="Channel_Settings">
     <Grid>
-        <StackPanel Height="400" Margin="0, 50">
-
+        <StackPanel Height="400" Margin="0, 60">
+            <UniformGrid>
+            </UniformGrid>
         </StackPanel>
         <Button Height="60" Width="60" Margin="210, 400, 0, 0" Background="Transparent" BorderBrush="Transparent">
             <Image Source="Resources/AddBtn.png"/>
