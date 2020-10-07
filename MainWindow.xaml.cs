@@ -31,7 +31,7 @@ namespace Maeily_Windows
 
         private void Setting(object sender, RoutedEventArgs e)
         {
-            Frame.Source = new Uri("Settings.xaml", UriKind.Relative);
+            Frame.Source = new Uri("Settings.xaml", UriKind.Relative); // show hide
         }
     }
 }

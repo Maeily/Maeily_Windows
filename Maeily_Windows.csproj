@@ -56,11 +56,20 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddChannel.xaml.cs">
+      <DependentUpon>AddChannel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Calendar.xaml.cs">
       <DependentUpon>Calendar.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Channel.xaml.cs">
+      <DependentUpon>Channel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ChannelInfo.xaml.cs">
       <DependentUpon>ChannelInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Channel_Settings.xaml.cs">
+      <DependentUpon>Channel_Settings.xaml</DependentUpon>
     </Compile>
     <Compile Include="InChannel.xaml.cs">
       <DependentUpon>InChannel.xaml</DependentUpon>
@@ -81,13 +90,25 @@
     <Compile Include="SettingBackground.cs">
       <DependentUpon>Widget.xaml</DependentUpon>
     </Compile>
+    <Page Include="AddChannel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Calendar.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Channel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ChannelInfo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Channel_Settings.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="InChannel.xaml">
       <Generator>MSBuild:Compile</Generator>

@@ -16,19 +16,13 @@ using System.Windows.Shapes;
 namespace Maeily_Windows
 {
     /// <summary>
-    /// Channel.xaml에 대한 상호 작용 논리
+    /// AddChannel.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class Channel : Page
+    public partial class AddChannel : Page
     {
-        MainWindow main;
-
-        public Channel()
+        public AddChannel()
         {
             InitializeComponent();
-        }
-
-        private void AddBtn_Click(object sender, RoutedEventArgs e)
-        {
         }
     }
 }

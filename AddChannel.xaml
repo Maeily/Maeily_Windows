@@ -1,0 +1,41 @@
+﻿<Page x:Class="Maeily_Windows.AddChannel"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Maeily_Windows"
+      mc:Ignorable="d" 
+      d:DesignHeight="520" d:DesignWidth="312"
+      Title="AddChannel">
+    <Page.Resources>
+        <Style TargetType="TextBox">
+            <Setter Property="Background" Value="#F1F1F1" />
+            <Setter Property="BorderBrush" Value="#F1F1F1" />
+            <Style.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="15" />
+                    <Setter Property="Padding" Value="10, 3, 10, 0" />
+                </Style>
+            </Style.Resources>
+        </Style>
+    </Page.Resources>
+    <StackPanel Margin="0,80">
+        <Image Height="100" Width="180"/>
+        <Label Margin="50" Width="60" FontSize="15" Foreground="#B0B0B0" HorizontalAlignment="Center">채널명</Label>
+        <TextBox Width="160" />
+        <Button Name="BtnSubmit" Height="35" Margin="30, 50" BorderBrush="#F1F1F1">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border CornerRadius="15" BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="2.5"
+                                x:Name="BorderBtn" Background="#F1F1F1">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+            <Button.Content>
+                <TextBlock FontSize="15" Foreground="#5E5E5E">수정</TextBlock>
+            </Button.Content>
+        </Button>
+    </StackPanel>
+</Page>
