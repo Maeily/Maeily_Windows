@@ -40,10 +40,12 @@
                 <Label Width="110" FontSize="15" Foreground="#B0B0B0">비밀번호 확인</Label>
                 <TextBox Width="160" />
             </StackPanel>
-            <Button Name="BtnSubmit" Height="35" Margin="30, 15">
+            <Button Name="BtnSubmit" Height="35" Margin="30, 15" BorderBrush="#F1F1F1">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
-                        <Border CornerRadius="15" Background="#F1F1F1">
+                        <Border CornerRadius="15" BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="2.5"
+                                x:Name="BorderBtn" Background="#F1F1F1">
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
                         </Border>
                     </ControlTemplate>
@@ -52,9 +54,11 @@
                     <TextBlock FontSize="15" Foreground="#5E5E5E">수정</TextBlock>
                 </Button.Content>
             </Button>
-            <Label Margin="0, 20, 0, 0" HorizontalAlignment="Center" Foreground="#5E5E5E" FontWeight="Bold">다크 모드</Label>
+            <Label Margin="0, 20, 0, 0" HorizontalAlignment="Center"
+                   Foreground="#5E5E5E" FontWeight="Bold">다크 모드</Label>
             <CheckBox x:Name="ChkDarkMode" HorizontalAlignment="Center" Margin="10" />
-            <Label Foreground="#656565" FontSize="15" Margin="0, 15, 0, 0" HorizontalAlignment="Center">문의: foxboxr@dgsw.hs.kr</Label>
+            <Label Foreground="#656565" FontSize="15" Margin="0, 15, 0, 0"
+                   HorizontalAlignment="Center">문의: foxboxr@dgsw.hs.kr</Label>
         </StackPanel>
     </Grid>
 </Page>
