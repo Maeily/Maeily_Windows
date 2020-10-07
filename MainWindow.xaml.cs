@@ -21,10 +21,17 @@ namespace Maeily_Windows
 
         private void Channel(object sender, RoutedEventArgs e)
         {
+            Frame.Source = new Uri("Channel.xaml", UriKind.Relative);
         }
 
         private void Calender(object sender, RoutedEventArgs e)
         {
+            Frame.Source = new Uri("Calendar.xaml", UriKind.Relative);
+        }
+
+        private void Setting(object sender, RoutedEventArgs e)
+        {
+            Frame.Source = new Uri("Settings.xaml", UriKind.Relative);
         }
     }
 }
