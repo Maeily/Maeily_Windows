@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -27,13 +29,18 @@ namespace Maeily_Windows
             InitializeComponent();
 
             Loaded += new RoutedEventHandler(Calendar_Loaded);
+
+            AddContent(1, "테스트");
+            AddContent(1, "테스트");
+            AddContent(1, "테스트");
+            AddContent(1, "테스트");
         }
 
         private void Calendar_Loaded(object sender, RoutedEventArgs args)
         {
             int i;
 
-            LbTitleDate.Content = dateTime.ToString("yyyy년 MM월");
+            LbTitleDate.Content = dateTime.ToString("yyyy년 MM월 dd일");
 
             UGridCalendar.FirstColumn = CheckDateColumn();
 
@@ -56,7 +63,35 @@ namespace Maeily_Windows
                 textBlock.FontWeight = FontWeights.Bold;
                 button.Content = textBlock;
                 UGridCalendar.Children.Add(button);
+
+                if (DateTime.UtcNow.Day.ToString().Equals(i.ToString()))
+                {
+                    BrushConverter brushConverter = new BrushConverter();
+                    button.Foreground = (Brush)brushConverter.ConvertFrom("#B7DE4B");
+                }
             }
+        }
+
+        private void AddContent(int important, string contents)
+        {
+            StackPanel stackPanel = new StackPanel() {
+                Orientation = Orientation.Horizontal,
+                Margin = new Thickness(5)
+            };
+            Rectangle rectangle = new Rectangle() {
+                Width = 10,
+                Height = 10,
+                Fill = Brushes.Red,
+                Margin = new Thickness(50, 0, 0, 0)
+            };
+            TextBlock textBlock = new TextBlock() {
+                VerticalAlignment = VerticalAlignment.Center,
+                Margin = new Thickness(10, 0, 0, 0),
+                Text = contents
+            };
+            stackPanel.Children.Add(rectangle);
+            stackPanel.Children.Add(textBlock);
+            UGridContents.Children.Add(stackPanel);
         }
 
         private int CheckDateColumn()
