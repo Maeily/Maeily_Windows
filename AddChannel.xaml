@@ -19,19 +19,8 @@
                 <Label Margin="10, 0, 10, 0" Width="60" FontSize="15" Foreground="#B0B0B0" HorizontalAlignment="Center">채널명</Label>
                 <TextBox Width="160" x:Name="TbChannelName" Style="{StaticResource StyleRoundBox}" />
             </StackPanel>
-            <Button Name="BtnSubmit" Height="35" Margin="30, 50" BorderBrush="#F1F1F1">
-                <Button.Template>
-                    <ControlTemplate TargetType="Button">
-                        <Border CornerRadius="15" BorderBrush="{TemplateBinding BorderBrush}"
-                                    BorderThickness="2.5"
-                                    x:Name="BorderBtn" Background="#F1F1F1">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
-                        </Border>
-                    </ControlTemplate>
-                </Button.Template>
-                <Button.Content>
-                    <TextBlock FontSize="15" Foreground="#5E5E5E">생성</TextBlock>
-                </Button.Content>
+            <Button Name="BtnSubmit" Height="35" Margin="30, 50" Background="#F1F1F1"
+                    Content="생성" FontSize="15" Template="{StaticResource RoundBtn}">
             </Button>
         </StackPanel>
     </Grid>
