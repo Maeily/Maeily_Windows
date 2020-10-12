@@ -8,12 +8,26 @@
             <Setter Property="Background" Value="#F1F1F1" />
             <Setter Property="BorderBrush" Value="#F1F1F1" />
             <Setter Property="Padding" Value="10, 2, 10, 0" />
-            <Setter Property="Height" Value="25"/>
+            <Setter Property="Height" Value="25" />
             <Style.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10" />
                 </Style>
             </Style.Resources>
         </Style>
+        <ControlTemplate x:Key="RoundBtn" TargetType="Button">
+            <Border CornerRadius="15" Background="#F1F1F1" BorderThickness="2.5"
+                    BorderBrush="{TemplateBinding BorderBrush}">
+                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="BorderBrush" Value="#dfdfdf"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="False">
+                    <Setter Property="BorderBrush" Value="#F1F1F1"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
     </Application.Resources>
 </Application>
