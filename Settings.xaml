@@ -7,18 +7,7 @@
       mc:Ignorable="d"
       d:DesignHeight="520" d:DesignWidth="312"
       Title="Settings">
-    <Page.Resources>
-        <Style TargetType="TextBox">
-            <Setter Property="Background" Value="#F1F1F1" />
-            <Setter Property="BorderBrush" Value="#F1F1F1" />
-            <Style.Resources>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="CornerRadius" Value="15" />
-                    <Setter Property="Padding" Value="10, 3, 10, 0" />
-                </Style>
-            </Style.Resources>
-        </Style>
-    </Page.Resources>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="126" />
@@ -30,15 +19,15 @@
         <StackPanel Grid.Row="1" Margin="16, 40, 0, 0">
             <StackPanel Orientation="Horizontal">
                 <Label Width="110" FontSize="15" Foreground="#B0B0B0">이름</Label>
-                <TextBox Width="160" />
+                <TextBox x:Name="TbName" Width="160" Style="{StaticResource StyleRoundBox}" />
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0, 30">
                 <Label Width="110" FontSize="15" Foreground="#B0B0B0">비밀번호</Label>
-                <TextBox Width="160" />
+                <TextBox x:Name="TbPwd" Width="160" Style="{StaticResource StyleRoundBox}" />
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Label Width="110" FontSize="15" Foreground="#B0B0B0">비밀번호 확인</Label>
-                <TextBox Width="160" />
+                <TextBox x:Name="TbRePwd" Width="160" Style="{StaticResource StyleRoundBox}" />
             </StackPanel>
             <Button Name="BtnSubmit" Height="35" Margin="30, 15" BorderBrush="#F1F1F1">
                 <Button.Template>
