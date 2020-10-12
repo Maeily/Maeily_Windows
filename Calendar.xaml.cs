@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Maeily_Windows.Controls;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -23,6 +24,7 @@ namespace Maeily_Windows
     public partial class Calendar : Page
     {
         private DateTime dateTime = DateTime.UtcNow;
+        private List<CalendarContent> contents = new List<CalendarContent>();
 
         public Calendar()
         {
@@ -30,9 +32,6 @@ namespace Maeily_Windows
 
             Loaded += new RoutedEventHandler(Calendar_Loaded);
 
-            AddContent(1, "테스트");
-            AddContent(1, "테스트");
-            AddContent(1, "테스트");
             AddContent(1, "테스트");
         }
 
@@ -72,26 +71,14 @@ namespace Maeily_Windows
             }
         }
 
-        private void AddContent(int important, string contents)
+        private void AddContent(int important, string contentStr)
         {
-            StackPanel stackPanel = new StackPanel() {
-                Orientation = Orientation.Horizontal,
-                Margin = new Thickness(5)
-            };
-            Rectangle rectangle = new Rectangle() {
-                Width = 10,
-                Height = 10,
-                Fill = Brushes.Red,
-                Margin = new Thickness(50, 0, 0, 0)
-            };
-            TextBlock textBlock = new TextBlock() {
-                VerticalAlignment = VerticalAlignment.Center,
-                Margin = new Thickness(10, 0, 0, 0),
-                Text = contents
-            };
-            stackPanel.Children.Add(rectangle);
-            stackPanel.Children.Add(textBlock);
-            UGridContents.Children.Add(stackPanel);
+            CalendarContent content = new CalendarContent(1, contentStr);
+
+            contents.Add(content);
+
+            ListContents.ItemsSource = contents;
+            ListContents.Items.Refresh();
         }
 
         private int CheckDateColumn()

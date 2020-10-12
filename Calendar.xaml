@@ -27,6 +27,8 @@
         <Line X1="30" X2="280" Stroke="Black" StrokeThickness="2" />
         <UniformGrid x:Name="UGridCalendar" Columns="7" Rows="6" Width="250" Height="230" />
         <Line X1="30" X2="280" Stroke="Black" StrokeThickness="2" />
-        <UniformGrid Margin="0, 5, 0, 0" x:Name="UGridContents" Width="300" Height="170" Rows="4"/>
+        <ListView x:Name="ListContents" Width="250" Height="170" Margin="0, 20" 
+                  ScrollViewer.VerticalScrollBarVisibility="Auto"
+                  Background="Transparent" BorderBrush="Transparent"/>
     </StackPanel>
 </Page>
