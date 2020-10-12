@@ -13,7 +13,7 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Image x:Name="ImgChannel" Width="130" Height="90" Grid.Row="0" Source="Resources/AddBtn.png"
-                   HorizontalAlignment="Center" VerticalAlignment="Center" />
+                   HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="Uniform" />
         <StackPanel Margin="10" Grid.Row="1">
             <StackPanel Orientation="Horizontal" Margin="0, 20">
                 <Label Margin="10, 0, 10, 0" Width="60" FontSize="15"
