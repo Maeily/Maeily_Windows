@@ -19,23 +19,32 @@
             </Style.Resources>
         </Style>
     </Page.Resources>
-    <StackPanel Margin="0,80">
-        <Image Height="100" Width="180"/>
-        <Label Margin="50" Width="60" FontSize="15" Foreground="#B0B0B0" HorizontalAlignment="Center">채널명</Label>
-        <TextBox Width="160" />
-        <Button Name="BtnSubmit" Height="35" Margin="30, 50" BorderBrush="#F1F1F1">
-            <Button.Template>
-                <ControlTemplate TargetType="Button">
-                    <Border CornerRadius="15" BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="2.5"
-                                x:Name="BorderBtn" Background="#F1F1F1">
-                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
-                    </Border>
-                </ControlTemplate>
-            </Button.Template>
-            <Button.Content>
-                <TextBlock FontSize="15" Foreground="#5E5E5E">수정</TextBlock>
-            </Button.Content>
-        </Button>
-    </StackPanel>
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="200"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Image x:Name="ImgChannel" Width="130" Height="90" Grid.Row="0" Source="Resources/Setting.png"
+                   HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <StackPanel Margin="10" Grid.Row="1">
+            <StackPanel Orientation="Horizontal" Margin="0, 20">
+                <Label Margin="10, 0, 10, 0" Width="60" FontSize="15" Foreground="#B0B0B0" HorizontalAlignment="Center">채널명</Label>
+                <TextBox Width="160" />
+            </StackPanel>
+            <Button Name="BtnSubmit" Height="35" Margin="30, 50" BorderBrush="#F1F1F1">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="15" BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="2.5"
+                                    x:Name="BorderBtn" Background="#F1F1F1">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+                <Button.Content>
+                    <TextBlock FontSize="15" Foreground="#5E5E5E">생성</TextBlock>
+                </Button.Content>
+            </Button>
+        </StackPanel>
+    </Grid>
 </Page>
