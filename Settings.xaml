@@ -29,20 +29,8 @@
                 <Label Width="110" FontSize="15" Foreground="#B0B0B0">비밀번호 확인</Label>
                 <TextBox x:Name="TbRePwd" Width="160" Style="{StaticResource StyleRoundBox}" />
             </StackPanel>
-            <Button Name="BtnSubmit" Height="35" Margin="30, 15" BorderBrush="#F1F1F1">
-                <Button.Template>
-                    <ControlTemplate TargetType="Button">
-                        <Border CornerRadius="15" BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="2.5"
-                                x:Name="BorderBtn" Background="#F1F1F1">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
-                        </Border>
-                    </ControlTemplate>
-                </Button.Template>
-                <Button.Content>
-                    <TextBlock FontSize="15" Foreground="#5E5E5E">수정</TextBlock>
-                </Button.Content>
-            </Button>
+            <Button Name="BtnSubmit" Height="35" Margin="30, 15" Background="#F1F1F1"
+                    Template="{StaticResource RoundBtn}" Content="변경" />
             <Label Margin="0, 20, 0, 0" HorizontalAlignment="Center"
                    Foreground="#5E5E5E" FontWeight="Bold">다크 모드</Label>
             <CheckBox x:Name="ChkDarkMode" HorizontalAlignment="Center" Margin="10" />
