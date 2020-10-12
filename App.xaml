@@ -4,5 +4,16 @@
              xmlns:local="clr-namespace:Maeily_Windows"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
+        <Style x:Key="StyleRoundBox" TargetType="TextBox">
+            <Setter Property="Background" Value="#F1F1F1" />
+            <Setter Property="BorderBrush" Value="#F1F1F1" />
+            <Setter Property="Padding" Value="10, 2, 10, 0" />
+            <Setter Property="Height" Value="25"/>
+            <Style.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10" />
+                </Style>
+            </Style.Resources>
+        </Style>
     </Application.Resources>
 </Application>

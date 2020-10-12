@@ -7,20 +7,9 @@
       mc:Ignorable="d" 
       d:DesignHeight="520" d:DesignWidth="312"
       Title="Channel">
-    <Page.Resources>
-        <Style TargetType="TextBox">
-            <Setter Property="Background" Value="#F1F1F1" />
-            <Setter Property="BorderBrush" Value="#F1F1F1" />
-            <Style.Resources>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="CornerRadius" Value="15" />
-                </Style>
-            </Style.Resources>
-        </Style>
-    </Page.Resources>
     <Grid>
         <StackPanel>
-            <TextBox x:Name="TbSearch" Width="250" Height="25" Padding="10, 2, 10, 0" Margin="0, 20, 0, 0" />
+            <TextBox x:Name="TbSearch" Width="250" Style="{StaticResource StyleRoundBox}" Margin="0, 20, 0, 0" />
             <UniformGrid Margin="20"></UniformGrid>
         </StackPanel>
         <Button x:Name="AddBtn" Height="60" Width="60" Margin="210, 400, 0, 0" Background="Transparent" BorderBrush="Transparent" Click="AddBtn_Click">

@@ -1,35 +1,23 @@
 ﻿<Page x:Class="Maeily_Windows.AddChannel"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:Maeily_Windows"
-      mc:Ignorable="d" 
+      mc:Ignorable="d"
       d:DesignHeight="520" d:DesignWidth="312"
       Title="AddChannel">
-    <Page.Resources>
-        <Style TargetType="TextBox">
-            <Setter Property="Background" Value="#F1F1F1" />
-            <Setter Property="BorderBrush" Value="#F1F1F1" />
-            <Style.Resources>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="CornerRadius" Value="15" />
-                    <Setter Property="Padding" Value="10, 3, 10, 0" />
-                </Style>
-            </Style.Resources>
-        </Style>
-    </Page.Resources>
     <Grid Margin="10">
         <Grid.RowDefinitions>
-            <RowDefinition Height="200"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="200" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Image x:Name="ImgChannel" Width="130" Height="90" Grid.Row="0" Source="Resources/Setting.png"
-                   HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Image x:Name="ImgChannel" Width="130" Height="90" Grid.Row="0" Source="Resources/AddBtn.png"
+                   HorizontalAlignment="Center" VerticalAlignment="Center" />
         <StackPanel Margin="10" Grid.Row="1">
             <StackPanel Orientation="Horizontal" Margin="0, 20">
                 <Label Margin="10, 0, 10, 0" Width="60" FontSize="15" Foreground="#B0B0B0" HorizontalAlignment="Center">채널명</Label>
-                <TextBox Width="160" />
+                <TextBox Width="160" x:Name="TbChannelName" Style="{StaticResource StyleRoundBox}" />
             </StackPanel>
             <Button Name="BtnSubmit" Height="35" Margin="30, 50" BorderBrush="#F1F1F1">
                 <Button.Template>

@@ -7,21 +7,11 @@
       mc:Ignorable="d"
       d:DesignHeight="520" d:DesignWidth="312"
       Title="InChannel">
-    <Page.Resources>
-        <Style TargetType="TextBox">
-            <Setter Property="Background" Value="#F1F1F1" />
-            <Setter Property="BorderBrush" Value="#F1F1F1" />
-            <Style.Resources>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="CornerRadius" Value="15" />
-                </Style>
-            </Style.Resources>
-        </Style>
-    </Page.Resources>
+
     <StackPanel>
-        <TextBox x:Name="TbSearch" Width="250" Height="25" Padding="10, 2, 10, 0" Margin="0, 20, 0, 0" />
+        <TextBox x:Name="TbSearch" Width="250" Style="{StaticResource StyleRoundBox}" Margin="0, 20, 0, 0" />
         <Button FontSize="10" HorizontalAlignment="Right" VerticalAlignment="Bottom"
-                Margin="0, 30, 10, 0" Background="Transparent" 
+                Margin="0, 30, 10, 0" Background="Transparent"
                 BorderBrush="Transparent" x:Name="BtnShowChInfo">채널 정보</Button>
         <Grid Margin="10">
             <Grid.ColumnDefinitions>
@@ -60,9 +50,9 @@
                 <RowDefinition Height="290" />
                 <RowDefinition Height="40" />
             </Grid.RowDefinitions>
-            <ListView x:Name="CalendarList" Background="Transparent" 
-                      BorderBrush="Transparent" Grid.Row="0" Margin="0, 10"/>
-            <Button FontSize="15" Grid.Row="1" Margin="0, 0, 10, 0" 
+            <ListView x:Name="CalendarList" Background="Transparent"
+                      BorderBrush="Transparent" Grid.Row="0" Margin="0, 10" />
+            <Button FontSize="15" Grid.Row="1" Margin="0, 0, 10, 0"
                    HorizontalAlignment="Right" Background="Transparent"
                    BorderBrush="Transparent">일정 설정</Button>
         </Grid>

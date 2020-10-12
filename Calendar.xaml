@@ -8,27 +8,15 @@
       d:DesignHeight="520" d:DesignWidth="312"
       Title="Calendar">
 
-    <Page.Resources>
-        <Style TargetType="TextBox">
-            <Setter Property="Background" Value="#F1F1F1" />
-            <Setter Property="BorderBrush" Value="#F1F1F1" />
-            <Style.Resources>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="CornerRadius" Value="15" />
-                </Style>
-            </Style.Resources>
-        </Style>
-    </Page.Resources>
-
     <StackPanel>
-        <TextBox x:Name="TbSearch" Width="250" Height="25" Padding="10, 2, 10, 0" Margin="0, 20, 0, 0" />
+        <TextBox x:Name="TbSearch" Width="250" Style="{StaticResource StyleRoundBox}" Margin="0, 20, 0, 0" />
         <Label FontWeight="Bold" FontSize="20" x:Name="LbTitleDate" Margin="10"
                HorizontalAlignment="Center" VerticalAlignment="Center" />
         <Line X1="30" X2="280" Stroke="Black" StrokeThickness="2" />
         <UniformGrid x:Name="UGridCalendar" Columns="7" Rows="6" Width="250" Height="230" />
         <Line X1="30" X2="280" Stroke="Black" StrokeThickness="2" />
-        <ListView x:Name="ListContents" Width="250" Height="170" Margin="0, 20" 
+        <ListView x:Name="ListContents" Width="250" Height="170" Margin="0, 20"
                   ScrollViewer.VerticalScrollBarVisibility="Auto"
-                  Background="Transparent" BorderBrush="Transparent"/>
+                  Background="Transparent" BorderBrush="Transparent" />
     </StackPanel>
 </Page>
