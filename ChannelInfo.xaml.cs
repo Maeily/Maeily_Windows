@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Maeily_Windows.Controls;
+using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
@@ -12,7 +13,7 @@ namespace Maeily_Windows
     /// </summary>
     public partial class ChannelInfo : Page
     {
-        private List<StackPanel> Users = new List<StackPanel>();
+        private List<UserInfo> Users = new List<UserInfo>();
 
         public ChannelInfo()
         {
@@ -27,28 +28,9 @@ namespace Maeily_Windows
 
         private void AddUserProfile(ImageSource imgSrc, string userInfo)
         {
-            StackPanel stackPanel = new StackPanel()
-            {
-                Orientation = Orientation.Horizontal,
-                VerticalAlignment = VerticalAlignment.Center,
-                HorizontalAlignment = HorizontalAlignment.Center
-            };
-            Image image = new Image();
-            image.Source = imgSrc;
-            image.Margin = new Thickness(40, 10, 30, 10);
-            image.Width = 40;
-            image.Height = 40;
-            TextBlock textBlock = new TextBlock()
-            {
-                FontWeight = FontWeights.Bold,
-                Text = userInfo,
-                HorizontalAlignment = HorizontalAlignment.Center,
-                VerticalAlignment = VerticalAlignment.Center,
-                FontSize = 15
-            };
-            stackPanel.Children.Add(image);
-            stackPanel.Children.Add(textBlock);
-            Users.Add(stackPanel);
+            UserInfo user = new UserInfo(new User { imageSource = new BitmapImage(new Uri(@"/Resources/AddBtn.png", UriKind.Relative)), name = "테스트" });
+
+            Users.Add(user);
             Userlist.ItemsSource = Users;
             Userlist.Items.Refresh();
         }
