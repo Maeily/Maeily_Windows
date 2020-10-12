@@ -9,9 +9,22 @@ namespace Maeily_Windows
     /// </summary>
     public partial class MainWindow : Window
     {
+        Widget widget = new Widget();
         public MainWindow()
         {
             InitializeComponent();
+            StateChanged += MainWindow_StateChanged;
+        }
+
+        private void MainWindow_StateChanged(object sender, EventArgs e)
+        {
+            if (WindowState == WindowState.Minimized)
+            {
+                widget.Show();
+            } else if (WindowState == WindowState.Normal)
+            {
+                widget.Hide();
+            }
         }
 
         private void Main(object sender, RoutedEventArgs e)
