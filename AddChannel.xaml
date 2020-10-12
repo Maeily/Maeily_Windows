@@ -16,8 +16,29 @@
                    HorizontalAlignment="Center" VerticalAlignment="Center" />
         <StackPanel Margin="10" Grid.Row="1">
             <StackPanel Orientation="Horizontal" Margin="0, 20">
-                <Label Margin="10, 0, 10, 0" Width="60" FontSize="15" Foreground="#B0B0B0" HorizontalAlignment="Center">채널명</Label>
+                <Label Margin="10, 0, 10, 0" Width="60" FontSize="15"
+                       Foreground="#B0B0B0" HorizontalAlignment="Center">채널명</Label>
                 <TextBox Width="160" x:Name="TbChannelName" Style="{StaticResource StyleRoundBox}" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0, 10">
+                <Label Margin="10, 0" Width="60" FontSize="15" Foreground="#B0B0B0"
+                       HorizontalAlignment="Center">대표 색상</Label>
+                <ComboBox x:Name="CbColor" Width="160" FontWeight="Bold"
+                          IsEditable="False" VerticalAlignment="Center">
+                    <ComboBoxItem Foreground="Red" FontWeight="Bold">빨강</ComboBoxItem>
+                    <ComboBoxItem Foreground="Orange" FontWeight="Bold">주황</ComboBoxItem>
+                    <ComboBoxItem Foreground="Yellow" FontWeight="Bold">노랑</ComboBoxItem>
+                    <ComboBoxItem Foreground="Green" FontWeight="Bold">초록</ComboBoxItem>
+                    <ComboBoxItem Foreground="Blue" FontWeight="Bold">파랑</ComboBoxItem>
+                    <ComboBoxItem Foreground="Indigo" FontWeight="Bold">남색</ComboBoxItem>
+                    <ComboBoxItem Foreground="Purple" FontWeight="Bold">보라</ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0, 10">
+                <Label Margin="10, 0, 10, 0" Width="120" FontSize="15"
+                       Foreground="#B0B0B0" HorizontalAlignment="Center">전체공개 여부</Label>
+                <CheckBox x:Name="ChkIsPublic" HorizontalAlignment="Center"
+                          VerticalAlignment="Center" Margin="25, 0" />
             </StackPanel>
             <Button Name="BtnSubmit" Height="35" Margin="30, 50" Background="#F1F1F1"
                     Content="생성" FontSize="15" Template="{StaticResource RoundBtn}">
