@@ -42,7 +42,8 @@
                     </Polygon>
                 </Button.Content>
             </Button>
-            <ListView Grid.Row="1" Margin="10" x:Name="Userlist" BorderBrush="Transparent"/>
+            <ListView Grid.Row="1" Margin="10" x:Name="Userlist" BorderBrush="Transparent"
+                      ScrollViewer.VerticalScrollBarVisibility="Auto"/>
             <Button x:Name="BtnDown" HorizontalAlignment="Center" VerticalAlignment="Center"
                     Grid.Row="2" Background="Transparent" BorderBrush="Transparent">
                 <Button.Content>
