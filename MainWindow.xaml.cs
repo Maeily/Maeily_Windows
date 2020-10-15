@@ -29,22 +29,26 @@ namespace Maeily_Windows
 
         private void Main(object sender, RoutedEventArgs e)
         {
-            Frame.Source = new Uri("Main.xaml", UriKind.Relative);
+            ChangePage("Main.xaml");
         }
 
         private void Channel(object sender, RoutedEventArgs e)
         {
-            Frame.Source = new Uri("Channel.xaml", UriKind.Relative);
+            ChangePage("Channel.xaml");
         }
 
         private void Calender(object sender, RoutedEventArgs e)
         {
-            Frame.Source = new Uri("Calendar.xaml", UriKind.Relative);
+            ChangePage("Calendar.xaml");
         }
 
         private void Setting(object sender, RoutedEventArgs e)
         {
-            Frame.Source = new Uri("Settings.xaml", UriKind.Relative); // show hide
+            ChangePage("Settings.xaml");
+        }
+
+        public void ChangePage(string target) {
+            Frame.Source = new Uri(target, UriKind.Relative); 
         }
     }
 }
