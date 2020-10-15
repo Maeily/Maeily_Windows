@@ -77,6 +77,9 @@
     <Compile Include="Controls\CalendarContent.xaml.cs">
       <DependentUpon>CalendarContent.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\ChannelUnit.xaml.cs">
+      <DependentUpon>ChannelUnit.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\UserInfo.xaml.cs">
       <DependentUpon>UserInfo.xaml</DependentUpon>
     </Compile>
@@ -120,6 +123,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\CalendarContent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ChannelUnit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
