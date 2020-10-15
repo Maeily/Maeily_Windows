@@ -10,7 +10,7 @@
     <Grid>
         <StackPanel>
             <TextBox x:Name="TbSearch" Width="250" Style="{StaticResource StyleRoundBox}" Margin="0, 20, 0, 0" />
-            <UniformGrid Margin="20"></UniformGrid>
+            <UniformGrid x:Name="UGridChannelList" Margin="20" Height="340" Columns="2" Rows="4"></UniformGrid>
         </StackPanel>
         <Button x:Name="AddBtn" Height="60" Width="60" Margin="210, 400, 0, 0" Background="Transparent" BorderBrush="Transparent" Click="AddBtn_Click">
             <Image Source="Resources/AddBtn.png"/>

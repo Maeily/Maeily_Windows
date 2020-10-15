@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Maeily_Windows.Controls;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Maeily_Windows
 {
@@ -20,11 +10,27 @@ namespace Maeily_Windows
     /// </summary>
     public partial class Channel : Page
     {
-        MainWindow main;
+        private string[] fileNames = { "" };
 
         public Channel()
         {
             InitializeComponent();
+            Loaded += Channel_Loaded;
+        }
+
+        private void Channel_Loaded(object sender, RoutedEventArgs e)
+        {
+            DirectoryInfo directory = new DirectoryInfo("Channel");
+
+            if (directory.Exists)
+            {
+                foreach (var item in directory.GetFiles())
+                {
+                    ChannelUnit channelUnit = new ChannelUnit(item.Name.Replace(".txt", ""));
+
+                    UGridChannelList.Children.Add(channelUnit);
+                }
+            }
         }
 
         private void AddBtn_Click(object sender, RoutedEventArgs e)
