@@ -6,8 +6,9 @@
              xmlns:local="clr-namespace:Maeily_Windows.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="65" d:DesignWidth="85">
-    <Canvas Margin="5" Background="LightGray">
+    <Button x:Name="BtnChannelUnit" Background="#B7DE4B" BorderBrush="Transparent"
+            HorizontalContentAlignment="Left" VerticalContentAlignment="Top">
         <TextBlock x:Name="TxtChannelName" Foreground="White" Background="Transparent"
-                   Canvas.Left="10" Canvas.Top="10" FontWeight="Bold" TextTrimming="CharacterEllipsis"/>
-    </Canvas>
+                   FontWeight="Bold" TextTrimming="CharacterEllipsis" Margin="5"/>
+    </Button>
 </UserControl>
