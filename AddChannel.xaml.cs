@@ -80,8 +80,8 @@ namespace Maeily_Windows
             {
                 file = Path.GetFileNameWithoutExtension(openFileDialog.FileName);
                 System.IO.File.Copy(openFileDialog.FileName.Replace(".txt", ".jpg"),
-                    @"Channel/Resources/" + file + ".jpg", true);
-                jObject.Add("file_name", file + ".jpg");
+                    @"Channel/Resources/" + TbChannelName.Text + ".jpg", true);
+                jObject.Add("file_name", TbChannelName.Text + ".jpg");
                 ImgChannel.Source = null;
             }
             else

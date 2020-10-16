@@ -8,7 +8,10 @@
              d:DesignHeight="65" d:DesignWidth="85">
     <Button x:Name="BtnChannelUnit" Background="#B7DE4B" BorderBrush="Transparent"
             HorizontalContentAlignment="Left" VerticalContentAlignment="Top">
-        <TextBlock x:Name="TxtChannelName" Foreground="White" Background="Transparent"
-                   FontWeight="Bold" TextTrimming="CharacterEllipsis" Margin="5"/>
+        <Grid>
+            <TextBlock x:Name="TxtChannelName" Foreground="White" Background="Transparent"
+                       FontWeight="Bold" TextTrimming="CharacterEllipsis" Margin="5" Panel.ZIndex="5"/>
+            <Image x:Name="ImgChannelImage" Stretch="Fill" Panel.ZIndex="1"/>
+        </Grid>
     </Button>
 </UserControl>

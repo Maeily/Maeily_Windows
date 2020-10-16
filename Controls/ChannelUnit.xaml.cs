@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,6 +36,9 @@ namespace Maeily_Windows.Controls
         private void ChannelUnit_Loaded(object sender, RoutedEventArgs e)
         {
             TxtChannelName.Text = channelName;
+            FileInfo fileInfo = new FileInfo(@"Channel/Resources/" + channelName + ".jpg");
+
+            ImgChannelImage.Source = new BitmapImage(new Uri(fileInfo.FullName, UriKind.Absolute));
         }
     }
 }
