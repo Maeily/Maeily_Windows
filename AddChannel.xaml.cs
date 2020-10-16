@@ -14,6 +14,8 @@ namespace Maeily_Windows
     /// </summary>
     public partial class AddChannel : Page
     {
+        private FileInfo fileInfo; 
+        OpenFileDialog openFileDialog = new OpenFileDialog();
         public AddChannel()
         {
             InitializeComponent();
@@ -24,8 +26,10 @@ namespace Maeily_Windows
 
         private void BtnSubmit_Click(object sender, RoutedEventArgs e)
         {
-            FileInfo fileInfo = new FileInfo("Channel/" + TbChannelName.Text + ".txt");
+            string file = string.Empty;
+            fileInfo = new FileInfo("Channel/" + TbChannelName.Text + ".txt");
             DirectoryInfo directory = new DirectoryInfo("Channel");
+            DirectoryInfo directoryRes = new DirectoryInfo("Channel/Resources");
             FileStream fs;
             string isPublic = "False";
 
@@ -38,6 +42,11 @@ namespace Maeily_Windows
             if (directory.Exists == false)
             {
                 directory.Create();
+            }
+
+            if (directoryRes.Exists == false)
+            {
+                directoryRes.Create();
             }
 
             if (fileInfo.Exists == false)
@@ -67,6 +76,19 @@ namespace Maeily_Windows
             jObject.Add("color", CbColor.Text);
             jObject.Add("isPublic", isPublic);
 
+            if (openFileDialog.FileName != null)
+            {
+                file = Path.GetFileNameWithoutExtension(openFileDialog.FileName);
+                System.IO.File.Copy(openFileDialog.FileName.Replace(".txt", ".jpg"),
+                    @"Channel/Resources/" + file + ".jpg", true);
+                jObject.Add("file_name", file + ".jpg");
+                ImgChannel.Source = null;
+            }
+            else
+            {
+                jObject.Add("file_name", file);
+            }
+
             writer.Write(JsonConvert.SerializeObject(jObject));
             writer.Flush();
             writer.Close();
@@ -80,8 +102,7 @@ namespace Maeily_Windows
 
         private void ImgChannel_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "JPEG File (*.jpg)|*.jpg|PNG File (*.png)|*.png|BITMAP (*bmp)|*.bmp";
+            openFileDialog.Filter = "JPEG File (*.jpg)|*.jpg";
             openFileDialog.ShowDialog();
 
             if (openFileDialog.FileName != "")
