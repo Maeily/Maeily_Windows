@@ -17,13 +17,12 @@ namespace Maeily_Windows
 
         private void MainWindow_StateChanged(object sender, EventArgs e)
         {
-            Widget widget = new Widget();
             if (WindowState == WindowState.Minimized)
             {
-                widget.Show();
+                CreateWidget.widget.Show();
             } else if (WindowState == WindowState.Normal)
             {
-                widget.Hide();
+                CreateWidget.widget.Hide();
             }
         }
 
@@ -50,5 +49,10 @@ namespace Maeily_Windows
         public void ChangePage(string target) {
             Frame.Source = new Uri(target, UriKind.Relative); 
         }
+    }
+
+    public static class CreateWidget
+    {
+        public static Widget widget = new Widget();
     }
 }
