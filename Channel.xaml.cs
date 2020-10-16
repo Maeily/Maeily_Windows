@@ -1,6 +1,7 @@
 ﻿using Maeily_Windows.Controls;
 using System;
 using System.IO;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -20,14 +21,18 @@ namespace Maeily_Windows
         private void Channel_Loaded(object sender, RoutedEventArgs e)
         {
             DirectoryInfo directory = new DirectoryInfo("Channel");
+            FileInfo[] fileInfos = directory.GetFiles("*.txt");
 
             if (directory.Exists)
             {
-                foreach (var item in directory.GetFiles())
+                if (fileInfos.Length != 0)
                 {
-                    ChannelUnit channelUnit = new ChannelUnit(item.Name.Replace(".txt", ""));
+                    foreach (var item in fileInfos)
+                    {
+                        ChannelUnit channelUnit = new ChannelUnit(item.Name.Replace(".txt", ""));
 
-                    UGridChannelList.Children.Add(channelUnit);
+                        UGridChannelList.Children.Add(channelUnit);
+                    }
                 }
             }
         }
