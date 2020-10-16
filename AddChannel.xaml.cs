@@ -76,7 +76,7 @@ namespace Maeily_Windows
             jObject.Add("color", CbColor.Text);
             jObject.Add("isPublic", isPublic);
 
-            if (openFileDialog.FileName != null)
+            if (openFileDialog.FileName != "")
             {
                 file = Path.GetFileNameWithoutExtension(openFileDialog.FileName);
                 System.IO.File.Copy(openFileDialog.FileName.Replace(".txt", ".jpg"),
