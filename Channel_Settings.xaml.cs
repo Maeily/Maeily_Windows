@@ -20,7 +20,6 @@ namespace Maeily_Windows
     /// </summary>
     public partial class Channel_Settings : Page
     {
-
         public Channel_Settings()
         {
             InitializeComponent();
