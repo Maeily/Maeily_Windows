@@ -1,4 +1,5 @@
 ﻿using Maeily_Windows.Controls;
+using System;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
@@ -10,8 +11,6 @@ namespace Maeily_Windows
     /// </summary>
     public partial class Channel : Page
     {
-        private string[] fileNames = { "" };
-
         public Channel()
         {
             InitializeComponent();
@@ -35,6 +34,8 @@ namespace Maeily_Windows
 
         private void AddBtn_Click(object sender, RoutedEventArgs e)
         {
+            ((MainWindow) System.Windows.Application.Current.MainWindow).Frame.Source =
+                new Uri("AddChannel.xaml", UriKind.Relative);
         }
     }
 }
