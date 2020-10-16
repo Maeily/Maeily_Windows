@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows;
-using System.Windows.Navigation;
 
 namespace Maeily_Windows
 {
@@ -9,10 +8,13 @@ namespace Maeily_Windows
     /// </summary>
     public partial class MainWindow : Window
     {
+        private DateTime dateTime;
         public MainWindow()
         {
             InitializeComponent();
+            dateTime = DateTime.UtcNow;
             StateChanged += MainWindow_StateChanged;
+            LoadMeal loadMeal = new LoadMeal("https://open.neis.go.kr/hub/mealServiceDietInfo?ATPT_OFCDC_SC_CODE=D10&SD_SCHUL_CODE=7240393&MLSV_FROM_YMD=" + dateTime.ToString("yyyyMMdd") + "&MLSV_TO_YMD=" + dateTime.ToString("yyyyMMdd") + "&Type=json");
         }
 
         private void MainWindow_StateChanged(object sender, EventArgs e)
@@ -20,7 +22,8 @@ namespace Maeily_Windows
             if (WindowState == WindowState.Minimized)
             {
                 CreateWidget.widget.Show();
-            } else if (WindowState == WindowState.Normal)
+            }
+            else if (WindowState == WindowState.Normal)
             {
                 CreateWidget.widget.Hide();
             }
@@ -46,8 +49,9 @@ namespace Maeily_Windows
             ChangePage("Settings.xaml");
         }
 
-        public void ChangePage(string target) {
-            Frame.Source = new Uri(target, UriKind.Relative); 
+        public void ChangePage(string target)
+        {
+            Frame.Source = new Uri(target, UriKind.Relative);
         }
     }
 
