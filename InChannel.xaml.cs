@@ -1,5 +1,9 @@
-﻿using System;
+﻿using Maeily_Windows.Controls;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,9 +26,11 @@ namespace Maeily_Windows
     {
         List<StackPanel> Calendars = new List<StackPanel>();
         DateTime dateTime = DateTime.UtcNow;
-        public InChannel()
+        private string channelName = string.Empty;
+        public InChannel(string channelName)
         {
             InitializeComponent();
+            this.channelName = channelName;
             Loaded += new RoutedEventHandler(InChannel_Loaded);
             BtnLeft.Click += new RoutedEventHandler(ChangeDate);
             BtnRight.Click += new RoutedEventHandler(ChangeDate);
@@ -51,32 +57,16 @@ namespace Maeily_Windows
 
         private void InChannel_Loaded(object sender, RoutedEventArgs args)
         {
-            AddCalendar("dwada");
+            AddCalendar();
             RefreshDate();
         }
 
-        private void AddCalendar(string data)
+        private void AddCalendar()
         {
-            StackPanel stackPanel = new StackPanel()
-            {
-                Orientation = Orientation.Horizontal,
-                HorizontalAlignment = HorizontalAlignment.Center,
-                VerticalAlignment = VerticalAlignment.Center,
-                Margin = new Thickness(10)
-            };
-            Rectangle rectangle = new Rectangle();
-            rectangle.Width = 10;
-            rectangle.Height = 10;
-            rectangle.Margin = new Thickness(60, 0, 0, 0);
-            rectangle.Fill = Brushes.Black;
-            TextBlock textBlock = new TextBlock() { 
-                VerticalAlignment = VerticalAlignment.Center,
-                Margin = new Thickness(10, 0, 0, 0),
-                Text = data
-            };
-            stackPanel.Children.Add(rectangle);
-            stackPanel.Children.Add(textBlock);
-            Calendars.Add(stackPanel);
+            StreamReader reader = new StreamReader("Channel/Schedules/" + channelName + ".txt");
+            JObject jObject = new JObject(JObject.Parse(reader.ReadToEnd()));
+
+            MessageBox.Show(jObject.ToString());
             CalendarList.ItemsSource = Calendars;
             CalendarList.Items.Refresh();
         } 

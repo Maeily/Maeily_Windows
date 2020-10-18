@@ -19,13 +19,16 @@ namespace Maeily_Windows.Controls
             InitializeComponent();
             Loaded += ChannelUnit_Loaded;
             BtnChannelUnit.Click += BtnChannelUnit_Click;
+            BtnChannelUnit.Tag = channelName;
 
             this.channelName = channelName;
         }
 
         private void BtnChannelUnit_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show(TxtChannelName.Text);
+            InChannel inChannel = new InChannel((sender as Button).Tag.ToString());
+            ((MainWindow)System.Windows.Application.Current.MainWindow).
+                Frame.NavigationService.Navigate(inChannel);
         }
 
         private void ChannelUnit_Loaded(object sender, RoutedEventArgs e)
