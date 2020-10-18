@@ -1,21 +1,9 @@
-﻿using Maeily_Windows.Controls;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Maeily_Windows
 {
@@ -24,9 +12,10 @@ namespace Maeily_Windows
     /// </summary>
     public partial class InChannel : Page
     {
-        List<StackPanel> Calendars = new List<StackPanel>();
-        DateTime dateTime = DateTime.UtcNow;
+        private List<StackPanel> Calendars = new List<StackPanel>();
+        private DateTime dateTime = DateTime.UtcNow;
         private string channelName = string.Empty;
+
         public InChannel(string channelName)
         {
             InitializeComponent();
@@ -34,7 +23,6 @@ namespace Maeily_Windows
             Loaded += new RoutedEventHandler(InChannel_Loaded);
             BtnLeft.Click += new RoutedEventHandler(ChangeDate);
             BtnRight.Click += new RoutedEventHandler(ChangeDate);
-            MessageBox.Show(this.channelName);
         }
 
         private void ChangeDate(object sender, RoutedEventArgs args)
@@ -42,7 +30,8 @@ namespace Maeily_Windows
             if ((sender as Button).Tag.Equals("Left"))
             {
                 dateTime = dateTime.AddDays(-1);
-            } else
+            }
+            else
             {
                 dateTime = dateTime.AddDays(1);
             }
@@ -64,11 +53,9 @@ namespace Maeily_Windows
 
         private void AddCalendar()
         {
-            MessageBox.Show("add" + Environment.NewLine + channelName);
             StreamReader reader = new StreamReader("Channel/Schedules/" + channelName + ".txt");
             var jObject = JsonConvert.DeserializeObject(reader.ReadToEnd());
 
-            MessageBox.Show(jObject.ToString());
             CalendarList.ItemsSource = Calendars;
             CalendarList.Items.Refresh();
             reader.Close();
@@ -78,7 +65,7 @@ namespace Maeily_Windows
         {
             Channel_Settings channel_Settings = new Channel_Settings(dateTime, channelName);
 
-            ((MainWindow) System.Windows.Application.Current.MainWindow).
+            ((MainWindow)System.Windows.Application.Current.MainWindow).
                 Frame.NavigationService.Navigate(channel_Settings);
         }
     }

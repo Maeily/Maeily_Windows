@@ -1,4 +1,5 @@
 ﻿using Maeily_Windows.Controls;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -52,13 +53,17 @@ namespace Maeily_Windows
                 if (file.Exists)
                 {
                     StreamReader reader = new StreamReader(file.FullName);
+                    JArray jArray = JArray.Parse(reader.ReadToEnd());
 
-                    JObject jObject = JObject.Parse(reader.ReadToEnd());
+                    jArray.Add(JObject.FromObject(
+                        new { date = dateTime.ToString("MMdd"), content = TbContent.Text }));
 
-
-                    var a = jObject.SelectToken("Schedules");
-                    MessageBox.Show(a.ToString());
                     reader.Close();
+
+                    StreamWriter writer = File.CreateText(file.FullName);
+
+                    writer.Write(JsonConvert.SerializeObject(jArray));
+                    writer.Close();
                 }
 
                 ListSchedules.ItemsSource = contents;
