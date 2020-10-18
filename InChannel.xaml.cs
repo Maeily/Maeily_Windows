@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using Maeily_Windows.Controls;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -12,7 +14,7 @@ namespace Maeily_Windows
     /// </summary>
     public partial class InChannel : Page
     {
-        private List<StackPanel> Calendars = new List<StackPanel>();
+        private List<CalendarContent> calendars = new List<CalendarContent>();
         private DateTime dateTime = DateTime.UtcNow;
         private string channelName = string.Empty;
 
@@ -36,6 +38,7 @@ namespace Maeily_Windows
                 dateTime = dateTime.AddDays(1);
             }
             RefreshDate();
+            AddCalendar();
         }
 
         private void RefreshDate()
@@ -53,10 +56,22 @@ namespace Maeily_Windows
 
         private void AddCalendar()
         {
-            StreamReader reader = new StreamReader("Channel/Schedules/" + channelName + ".txt");
-            var jObject = JsonConvert.DeserializeObject(reader.ReadToEnd());
+            calendars.Clear();
+            CalendarList.ItemsSource = calendars;
+            CalendarList.Items.Refresh();
 
-            CalendarList.ItemsSource = Calendars;
+            StreamReader reader = new StreamReader("Channel/Schedules/" + channelName + ".txt");
+            JArray jArray = (JArray)JsonConvert.DeserializeObject(reader.ReadToEnd());
+
+            foreach (JObject item in jArray)
+            {
+                if (item["date"].ToString() == dateTime.ToString("MMdd"))
+                {
+                    calendars.Add(new CalendarContent(1, item["content"].ToString()));
+                }
+            }
+
+            CalendarList.ItemsSource = calendars;
             CalendarList.Items.Refresh();
             reader.Close();
         }
