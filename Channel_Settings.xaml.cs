@@ -1,17 +1,7 @@
-﻿using System;
+﻿using Maeily_Windows.Controls;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Maeily_Windows
 {
@@ -20,53 +10,43 @@ namespace Maeily_Windows
     /// </summary>
     public partial class Channel_Settings : Page
     {
+        private List<CalendarContent> contents = new List<CalendarContent>();
+
         public Channel_Settings()
         {
             InitializeComponent();
+            BtnAddContent.Click += new RoutedEventHandler(BtnAddContent_Click);
         }
 
-        public bool isalready = false;
-
-
-        public void Button_Click(object sender, RoutedEventArgs e)
+        public void BtnAddContent_Click(object sender, RoutedEventArgs e)
         {
-            if (txtbox.Visibility == Visibility.Hidden)
+            if (TbContent.Visibility == Visibility.Hidden)
             {
-                txtbox.Visibility = Visibility.Visible;
+                TbContent.Visibility = Visibility.Visible;
             }
             else
             {
-                AddCalendar(txtbox.Text);
-                txtbox.Visibility = Visibility.Hidden;
+                AddCalendar(TbContent.Text);
+                TbContent.Visibility = Visibility.Hidden;
+                TbContent.Text = null;
             }
         }
 
         private void AddCalendar(string name)
         {
-            isalready = false;
-            StackPanel stackPanel = new StackPanel()
+            if (TbContent.Text != "")
             {
-                Orientation = Orientation.Horizontal,
-                HorizontalAlignment = HorizontalAlignment.Center,
-                VerticalAlignment = VerticalAlignment.Center,
-                Width = 200,
-                Margin = new Thickness(10)
-            };
-            Rectangle rectangle = new Rectangle();
-            rectangle.Width = 10;
-            rectangle.Height = 10;
-            rectangle.Margin = new Thickness(60, 0, 0, 0);
-            rectangle.Fill = Brushes.Black;
-            TextBlock textBlock = new TextBlock()
-            {
-                VerticalAlignment = VerticalAlignment.Center,
-                Margin = new Thickness(10, 0, 0, 0),
-                Text = name
-            };
-            stackPanel.Children.Add(rectangle);
-            stackPanel.Children.Add(textBlock);
-            CalendarList.Children.Add(stackPanel);
-        }
+                CalendarContent content = new CalendarContent(1, name);
 
+                contents.Add(content);
+                ListSchedules.ItemsSource = contents;
+
+                ListSchedules.Items.Refresh();
+            }
+            else
+            {
+                MessageBox.Show("입력 칸을 채워주세요!", "메일리");
+            }
+        }
     }
 }

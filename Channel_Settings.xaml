@@ -8,13 +8,28 @@
       d:DesignHeight="520" d:DesignWidth="312"
       Title="Channel_Settings">
     <Grid>
-        <StackPanel Background="Transparent" Height="400" Margin="0, 60" Name="CalendarList">
-            <UniformGrid>
-            </UniformGrid>
-        </StackPanel>
-        <Button Height="60" Width="60" Margin="210, 400, 0, 0" Background="Transparent" BorderBrush="Transparent" Click="Button_Click">
-            <Image Source="Resources/AddBtn.png"/>
-        </Button>
-        <TextBox x:Name="txtbox" Width="150" Height="20" Margin="-40, 400, 0, 0" Visibility="Hidden"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+        <ListView x:Name="ListSchedules" Grid.Row="0" 
+                  BorderBrush="Transparent" Margin="0, 20"/>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBox x:Name="TbContent" Width="150" Height="20" Visibility="Hidden"
+                     HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0"/>
+
+            <Button x:Name="BtnAddContent" Height="60" Width="60" Background="Transparent"
+                    BorderBrush="Transparent" Grid.Column="1" 
+                    HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Image x:Name="ImgBtn" Source="Resources/AddBtn.png"/>
+            </Button>
+        </Grid>
     </Grid>
 </Page>
