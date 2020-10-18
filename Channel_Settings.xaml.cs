@@ -1,5 +1,8 @@
 ﻿using Maeily_Windows.Controls;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -11,11 +14,15 @@ namespace Maeily_Windows
     public partial class Channel_Settings : Page
     {
         private List<CalendarContent> contents = new List<CalendarContent>();
+        private DateTime dateTime = DateTime.UtcNow;
+        private string channelName = string.Empty;
 
-        public Channel_Settings()
+        public Channel_Settings(DateTime dateTime, string channelName)
         {
             InitializeComponent();
             BtnAddContent.Click += new RoutedEventHandler(BtnAddContent_Click);
+            this.dateTime = dateTime;
+            this.channelName = channelName;
         }
 
         public void BtnAddContent_Click(object sender, RoutedEventArgs e)
@@ -26,19 +33,34 @@ namespace Maeily_Windows
             }
             else
             {
-                AddCalendar(TbContent.Text);
+                AddCalendar();
                 TbContent.Visibility = Visibility.Hidden;
                 TbContent.Text = null;
             }
         }
 
-        private void AddCalendar(string name)
+        private void AddCalendar()
         {
             if (TbContent.Text != "")
             {
-                CalendarContent content = new CalendarContent(1, name);
+                CalendarContent content = new CalendarContent(1, TbContent.Text);
 
                 contents.Add(content);
+
+                FileInfo file = new FileInfo("Channel/Schedules/" + channelName + ".txt");
+
+                if (file.Exists)
+                {
+                    StreamReader reader = new StreamReader(file.FullName);
+
+                    JObject jObject = JObject.Parse(reader.ReadToEnd());
+
+
+                    var a = jObject.SelectToken("Schedules");
+                    MessageBox.Show(a.ToString());
+                    reader.Close();
+                }
+
                 ListSchedules.ItemsSource = contents;
 
                 ListSchedules.Items.Refresh();

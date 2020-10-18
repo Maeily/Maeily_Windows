@@ -34,6 +34,7 @@ namespace Maeily_Windows
             Loaded += new RoutedEventHandler(InChannel_Loaded);
             BtnLeft.Click += new RoutedEventHandler(ChangeDate);
             BtnRight.Click += new RoutedEventHandler(ChangeDate);
+            MessageBox.Show(this.channelName);
         }
 
         private void ChangeDate(object sender, RoutedEventArgs args)
@@ -63,12 +64,22 @@ namespace Maeily_Windows
 
         private void AddCalendar()
         {
+            MessageBox.Show("add" + Environment.NewLine + channelName);
             StreamReader reader = new StreamReader("Channel/Schedules/" + channelName + ".txt");
-            JObject jObject = new JObject(JObject.Parse(reader.ReadToEnd()));
+            var jObject = JsonConvert.DeserializeObject(reader.ReadToEnd());
 
             MessageBox.Show(jObject.ToString());
             CalendarList.ItemsSource = Calendars;
             CalendarList.Items.Refresh();
-        } 
+            reader.Close();
+        }
+
+        private void BtnSettings_Click(object sender, RoutedEventArgs e)
+        {
+            Channel_Settings channel_Settings = new Channel_Settings(dateTime, channelName);
+
+            ((MainWindow) System.Windows.Application.Current.MainWindow).
+                Frame.NavigationService.Navigate(channel_Settings);
+        }
     }
 }

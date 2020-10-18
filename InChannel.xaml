@@ -54,7 +54,7 @@
                       BorderBrush="Transparent" Grid.Row="0" Margin="0, 10" />
             <Button FontSize="15" Grid.Row="1" Margin="0, 0, 10, 0"
                    HorizontalAlignment="Right" Background="Transparent"
-                   BorderBrush="Transparent">일정 설정</Button>
+                   BorderBrush="Transparent" x:Name="BtnSettings" Click="BtnSettings_Click">일정 설정</Button>
         </Grid>
     </StackPanel>
 </Page>
