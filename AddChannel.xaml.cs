@@ -82,7 +82,8 @@ namespace Maeily_Windows
                 System.IO.File.Copy(openFileDialog.FileName.Replace(".txt", ".jpg"),
                     @"Channel/Resources/" + TbChannelName.Text + ".jpg", true);
                 jObject.Add("file_name", TbChannelName.Text + ".jpg");
-                ImgChannel.Source = null;
+                ImgChannel.Source = new BitmapImage(
+                    new Uri(@"Resources/AddBtn.png", UriKind.Relative));
             }
             else
             {
