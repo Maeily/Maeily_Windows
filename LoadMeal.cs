@@ -8,10 +8,12 @@ namespace Maeily_Windows
 {
     internal class LoadMeal
     {
+        public static LoadMeal loadMeal;
         private string targetURL = string.Empty;
 
         public LoadMeal(string targetURL)
         {
+            loadMeal = this;
             this.targetURL = targetURL;
         }
 
