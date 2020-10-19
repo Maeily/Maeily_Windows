@@ -96,7 +96,6 @@ namespace Maeily_Windows
                 new StreamWriter("Channel/Schedules/" + TbChannelName.Text + ".txt");
             JObject jObject = new JObject();
             JArray jArray = new JArray();
-            JObject JArrayObject = new JObject();
 
             jObject.Add("channel_name", TbChannelName.Text);
             jObject.Add("channel_code", "채널 코드");
@@ -120,10 +119,10 @@ namespace Maeily_Windows
             writer.Write(JsonConvert.SerializeObject(jObject));
             writer.Flush();
             writer.Close();
-            JArrayObject.Add(new JProperty("Schedules", jArray));
-            writerSch.Write(JsonConvert.SerializeObject(JArrayObject));
+            writerSch.Write(JsonConvert.SerializeObject(jArray));
             writerSch.Flush();
             writerSch.Close();
+            fs.Close();
 
             TbChannelName.Text = null;
             CbColor.SelectedItem = null;
