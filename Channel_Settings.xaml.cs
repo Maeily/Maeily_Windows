@@ -46,6 +46,7 @@ namespace Maeily_Windows
 
             ListSchedules.ItemsSource = contents;
             ListSchedules.Items.Refresh();
+            reader.Close();
         }
 
         public void BtnAddContent_Click(object sender, RoutedEventArgs e)
