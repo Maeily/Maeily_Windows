@@ -37,6 +37,7 @@ namespace Maeily_Windows
                 myPage = 2;
             }
             text.Text = LoadMeal.loadMeal.getMeal(myPage);
+            ChangeLbTimeText(myPage);
             meal.Children.Clear();
             meal.Children.Add(text);
         }
@@ -49,6 +50,7 @@ namespace Maeily_Windows
             }
             myPage++;
             text.Text = LoadMeal.loadMeal.getMeal(myPage);
+            ChangeLbTimeText(myPage);
             meal.Children.Clear();
             meal.Children.Add(text);
         }
@@ -61,8 +63,27 @@ namespace Maeily_Windows
             }
             myPage--;
             text.Text = LoadMeal.loadMeal.getMeal(myPage);
+            ChangeLbTimeText(myPage);
             meal.Children.Clear();
             meal.Children.Add(text);
+        }
+
+        private void ChangeLbTimeText(int n)
+        {
+            switch (n)
+            {
+                case 0:
+                    LbTime.Content = "아침";
+                    break;
+
+                case 1:
+                    LbTime.Content = "점심";
+                    break;
+
+                case 2:
+                    LbTime.Content = "저녁";
+                    break;
+            }
         }
     }
 }
