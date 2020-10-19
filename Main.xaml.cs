@@ -9,14 +9,18 @@ namespace Maeily_Windows
     /// </summary>
     public partial class Main : Page
     {
-        private int myPage;
+        private int my;
         private TextBlock text = new TextBlock();
 
         public Main()
         {
             InitializeComponent();
+<<<<<<< HEAD
             text.FontWeight = FontWeights.Bold;
             text.HorizontalAlignment = HorizontalAlignment.Center;
+=======
+            Visiblity_Controller();
+>>>>>>> develop
             Meal();
         }
 
@@ -26,43 +30,52 @@ namespace Maeily_Windows
 
             if (double.Parse(now) >= 19 && double.Parse(now) < 8)
             {
-                myPage = 2;
+                my = 0;
             }
             else if (double.Parse(now) >= 8 && double.Parse(now) < 13)
             {
-                myPage = 1;
+                my = 1;
             }
             else
             {
-                myPage = 2;
+                my = 2;
             }
-            text.Text = LoadMeal.loadMeal.getMeal(myPage);
+            text.Text = LoadMeal.loadMeal.getMeal(my);
             meal.Children.Clear();
             meal.Children.Add(text);
+            Visiblity_Controller();
         }
 
         private void RightButton_Click(object sender, RoutedEventArgs e)
         {
-            if (myPage >= 2)
-            {
-                return;
-            }
-            myPage++;
-            text.Text = LoadMeal.loadMeal.getMeal(myPage);
+            my++;
+            text.Text = LoadMeal.loadMeal.getMeal(my);
             meal.Children.Clear();
             meal.Children.Add(text);
+            Visiblity_Controller();
         }
 
         private void LeftButton_Click(object sender, RoutedEventArgs e)
         {
-            if (myPage <= 0)
-            {
-                return;
-            }
-            myPage--;
-            text.Text = LoadMeal.loadMeal.getMeal(myPage);
+            my--;
+            text.Text = LoadMeal.loadMeal.getMeal(my);
             meal.Children.Clear();
             meal.Children.Add(text);
+            Visiblity_Controller();
+        }
+
+        private void Visiblity_Controller()
+        {
+            Right.Visibility = Visibility.Visible;
+            Left.Visibility = Visibility.Visible;
+            if (my == 2)
+            {
+                Right.Visibility = Visibility.Hidden;
+            }
+            else if(my == 0)
+            {
+                Left.Visibility = Visibility.Hidden;
+            }
         }
     }
 }
