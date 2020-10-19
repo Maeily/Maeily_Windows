@@ -22,8 +22,30 @@ namespace Maeily_Windows
         {
             InitializeComponent();
             BtnAddContent.Click += new RoutedEventHandler(BtnAddContent_Click);
+            Loaded += Channel_Settings_Loaded;
             this.dateTime = dateTime;
             this.channelName = channelName;
+        }
+
+        private void Channel_Settings_Loaded(object sender, RoutedEventArgs e)
+        {
+            contents.Clear();
+            ListSchedules.ItemsSource = contents;
+            ListSchedules.Items.Refresh();
+
+            StreamReader reader = new StreamReader("Channel/Schedules/" + channelName + ".txt");
+            JArray jArray = JArray.Parse(reader.ReadToEnd());
+
+            foreach (JObject item in jArray)
+            {
+                if (item["start_date"].ToString() == dateTime.ToString("yyyyMMdd"))
+                {
+                    contents.Add(new CalendarContent(1, item["title"].ToString()));
+                }
+            }
+
+            ListSchedules.ItemsSource = contents;
+            ListSchedules.Items.Refresh();
         }
 
         public void BtnAddContent_Click(object sender, RoutedEventArgs e)
