@@ -45,6 +45,7 @@ namespace Maeily_Windows
             LbLeftDate.Content = dateTime.AddDays(-1).Day.ToString() + "일";
             LbMiddleDate.Content = dateTime.Day.ToString() + "일";
             LbRightDate.Content = dateTime.AddDays(1).Day.ToString() + "일";
+            LbMonth.Content = dateTime.ToString("yyyy년MM월");
         }
 
         private void InChannel_Loaded(object sender, RoutedEventArgs args)
