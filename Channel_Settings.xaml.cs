@@ -56,7 +56,13 @@ namespace Maeily_Windows
                     JArray jArray = JArray.Parse(reader.ReadToEnd());
 
                     jArray.Add(JObject.FromObject(
-                        new { date = dateTime.ToString("MMdd"), content = TbContent.Text }));
+                        new
+                        {
+                            channel_id = channelName,
+                            title = TbContent.Text,
+                            start_date = dateTime.ToString("yyyyMMdd"),
+                            end_date = dateTime.ToString("yyyyMMdd")
+                        }));
 
                     reader.Close();
 

@@ -1,5 +1,4 @@
 ﻿using Maeily_Windows.Controls;
-using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -61,13 +60,13 @@ namespace Maeily_Windows
             CalendarList.Items.Refresh();
 
             StreamReader reader = new StreamReader("Channel/Schedules/" + channelName + ".txt");
-            JArray jArray = (JArray)JsonConvert.DeserializeObject(reader.ReadToEnd());
+            JArray jArray = JArray.Parse(reader.ReadToEnd());
 
             foreach (JObject item in jArray)
             {
-                if (item["date"].ToString() == dateTime.ToString("MMdd"))
+                if (item["start_date"].ToString() == dateTime.ToString("yyyyMMdd"))
                 {
-                    calendars.Add(new CalendarContent(1, item["content"].ToString()));
+                    calendars.Add(new CalendarContent(1, item["title"].ToString()));
                 }
             }
 
