@@ -21,5 +21,19 @@ namespace Maeily_Windows
                 directory.Create();
             }
         }
+
+        public bool CheckFile(string path)
+        {
+            FileInfo file = new FileInfo(path);
+
+            if (!file.Exists)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
     }
 }
