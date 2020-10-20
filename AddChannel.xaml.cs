@@ -1,7 +1,6 @@
 ﻿using Microsoft.Win32;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using Newtonsoft.Json.Serialization;
 using System;
 using System.IO;
 using System.Windows;
@@ -17,6 +16,7 @@ namespace Maeily_Windows
     {
         private FileInfo fileInfo;
         private OpenFileDialog openFileDialog = new OpenFileDialog();
+        private string channelName = string.Empty;
 
         public AddChannel()
         {
@@ -41,14 +41,9 @@ namespace Maeily_Windows
         {
             string file = string.Empty;
             fileInfo = new FileInfo("Channel/" + TbChannelName.Text + ".txt");
-            FileInfo fileSchedules =
-                new FileInfo("Channel/Schedules/" + TbChannelName.Text + ".txt");
-            FileInfo channelUserList = new FileInfo("Channel/UserList/" + TbChannelName.Text + ".txt");
-            DirectoryInfo directory = new DirectoryInfo("Channel");
-            DirectoryInfo directoryRes = new DirectoryInfo("Channel/Resources");
-            DirectoryInfo directorySch = new DirectoryInfo("Channel/Schedules");
-            DirectoryInfo directoryLis = new DirectoryInfo("Channel/UserList");
+            JObject jObject = new JObject();
             FileStream fs;
+
             string isPublic = "False";
 
             if (TbChannelName.Text == "" || CbColor.Text == "")
@@ -56,37 +51,9 @@ namespace Maeily_Windows
                 MessageBox.Show("입력 칸을 채워주세요!", "메일리");
                 return;
             }
+            channelName = TbChannelName.Text;
 
-            if (!directorySch.Exists)
-            {
-                directory.Create();
-            }
-
-            if (directory.Exists == false)
-            {
-                directory.Create();
-            }
-
-            if (directoryRes.Exists == false)
-            {
-                directoryRes.Create();
-            }
-
-            if (!directoryLis.Exists)
-            {
-                directoryLis.Create();
-                fs = channelUserList.Create();
-                fs.Close();
-            }
-
-            if (fileInfo.Exists == false)
-            {
-                fs = fileInfo.Create();
-                fs.Close();
-                fs = fileSchedules.Create();
-                fs.Close();
-            }
-            else
+            if (fileInfo.Exists)
             {
                 MessageBox.Show("이미 존재하는 채널입니다!", "메일리");
                 TbChannelName.Text = null;
@@ -95,17 +62,20 @@ namespace Maeily_Windows
                 return;
             }
 
+            AddDirectory("Channel");
+            AddDirectory("Channel/Schedules");
+            AddDirectory("Channel/Resources");
+            AddDirectory("Channel/UserList");
+
+            fs = File.Create("Channel/Schedules/" + channelName + ".txt");
+            fs.Close();
+            fs = File.Create("Channel/" + channelName + ".txt");
+            fs.Close();
+
             if (ChkIsPublic.IsChecked == true)
             {
                 isPublic = "True";
             }
-
-            StreamWriter writer = new StreamWriter("Channel/" + TbChannelName.Text + ".txt");
-            StreamWriter writerSch =
-                new StreamWriter("Channel/Schedules/" + TbChannelName.Text + ".txt");
-            StreamWriter writerLis = new StreamWriter("Channel/UserList/" + TbChannelName.Text + ".txt");
-            JObject jObject = new JObject();
-            JArray jArray = new JArray();
 
             jObject.Add("channel_name", TbChannelName.Text);
             jObject.Add("channel_code", "채널 코드");
@@ -115,9 +85,8 @@ namespace Maeily_Windows
             if (openFileDialog.FileName != "")
             {
                 file = Path.GetFileNameWithoutExtension(openFileDialog.FileName);
-                System.IO.File.Copy(openFileDialog.FileName.Replace(".txt", ".jpg"),
+                File.Copy(openFileDialog.FileName.Replace(".txt", ".jpg"),
                     @"Channel/Resources/" + TbChannelName.Text + ".jpg", true);
-                jObject.Add("file_name", TbChannelName.Text + ".jpg");
                 ImgChannel.Source = new BitmapImage(
                     new Uri(@"Resources/AddBtn.png", UriKind.Relative));
             }
@@ -126,16 +95,9 @@ namespace Maeily_Windows
                 jObject.Add("file_name", file);
             }
 
-            writer.Write(JsonConvert.SerializeObject(jObject));
-            writer.Flush();
-            writer.Close();
-            writerSch.Write(JsonConvert.SerializeObject(jArray));
-            writerSch.Flush();
-            writerSch.Close();
-            writerLis.Write(new JArray());
-            writerLis.Flush();
-            writerLis.Close();
-            fs.Close();
+            WriteJObject("Channel/" + channelName + ".txt", JsonConvert.SerializeObject(jObject));
+            WriteJObject("Channel/Schedules/" + channelName + ".txt", "[]");
+            WriteJObject("Channel/UserList/" + channelName + ".txt", "[]");
 
             TbChannelName.Text = null;
             CbColor.SelectedItem = null;
@@ -160,6 +122,24 @@ namespace Maeily_Windows
             if (CbColor.SelectedItem != null)
             {
                 CbColor.Foreground = (CbColor.SelectedItem as ComboBoxItem).Foreground;
+            }
+        }
+
+        private void WriteJObject(string path, string msg)
+        {
+            StreamWriter writer = new StreamWriter(path);
+
+            writer.Write(msg);
+            writer.Close();
+        }
+
+        private void AddDirectory(string path)
+        {
+            DirectoryInfo directory = new DirectoryInfo(path);
+
+            if (!directory.Exists)
+            {
+                directory.Create();
             }
         }
     }
