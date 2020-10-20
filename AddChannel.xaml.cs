@@ -43,9 +43,11 @@ namespace Maeily_Windows
             fileInfo = new FileInfo("Channel/" + TbChannelName.Text + ".txt");
             FileInfo fileSchedules =
                 new FileInfo("Channel/Schedules/" + TbChannelName.Text + ".txt");
+            FileInfo channelUserList = new FileInfo("Channel/UserList/" + TbChannelName.Text + ".txt");
             DirectoryInfo directory = new DirectoryInfo("Channel");
             DirectoryInfo directoryRes = new DirectoryInfo("Channel/Resources");
             DirectoryInfo directorySch = new DirectoryInfo("Channel/Schedules");
+            DirectoryInfo directoryLis = new DirectoryInfo("Channel/UserList");
             FileStream fs;
             string isPublic = "False";
 
@@ -68,6 +70,13 @@ namespace Maeily_Windows
             if (directoryRes.Exists == false)
             {
                 directoryRes.Create();
+            }
+
+            if (!directoryLis.Exists)
+            {
+                directoryLis.Create();
+                fs = channelUserList.Create();
+                fs.Close();
             }
 
             if (fileInfo.Exists == false)
@@ -94,6 +103,7 @@ namespace Maeily_Windows
             StreamWriter writer = new StreamWriter("Channel/" + TbChannelName.Text + ".txt");
             StreamWriter writerSch =
                 new StreamWriter("Channel/Schedules/" + TbChannelName.Text + ".txt");
+            StreamWriter writerLis = new StreamWriter("Channel/UserList/" + TbChannelName.Text + ".txt");
             JObject jObject = new JObject();
             JArray jArray = new JArray();
 
@@ -122,6 +132,9 @@ namespace Maeily_Windows
             writerSch.Write(JsonConvert.SerializeObject(jArray));
             writerSch.Flush();
             writerSch.Close();
+            writerLis.Write(new JArray());
+            writerLis.Flush();
+            writerLis.Close();
             fs.Close();
 
             TbChannelName.Text = null;
