@@ -9,6 +9,8 @@ namespace Maeily_Windows
     public partial class MainWindow : Window
     {
         private DateTime dateTime;
+        private string userId = string.Empty;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -52,6 +54,11 @@ namespace Maeily_Windows
         public void ChangePage(string target)
         {
             Frame.Source = new Uri(target, UriKind.Relative);
+        }
+
+        public void LoadUser(string id)
+        {
+            userId = id;
         }
     }
 
