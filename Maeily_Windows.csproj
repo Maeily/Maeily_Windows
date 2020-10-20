@@ -83,6 +83,7 @@
     <Compile Include="Controls\UserInfo.xaml.cs">
       <DependentUpon>UserInfo.xaml</DependentUpon>
     </Compile>
+    <Compile Include="FileIO.cs" />
     <Compile Include="InChannel.xaml.cs">
       <DependentUpon>InChannel.xaml</DependentUpon>
     </Compile>

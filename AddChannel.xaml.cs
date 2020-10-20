@@ -17,6 +17,7 @@ namespace Maeily_Windows
         private FileInfo fileInfo;
         private OpenFileDialog openFileDialog = new OpenFileDialog();
         private string channelName = string.Empty;
+        private FileIO fileIO = new FileIO();
 
         public AddChannel()
         {
@@ -62,10 +63,10 @@ namespace Maeily_Windows
                 return;
             }
 
-            AddDirectory("Channel");
-            AddDirectory("Channel/Schedules");
-            AddDirectory("Channel/Resources");
-            AddDirectory("Channel/UserList");
+            fileIO.AddDirectory("Channel");
+            fileIO.AddDirectory("Channel/Schedules");
+            fileIO.AddDirectory("Channel/Resources");
+            fileIO.AddDirectory("Channel/UserList");
 
             fs = File.Create("Channel/Schedules/" + channelName + ".txt");
             fs.Close();
@@ -95,9 +96,9 @@ namespace Maeily_Windows
                 jObject.Add("file_name", file);
             }
 
-            WriteJObject("Channel/" + channelName + ".txt", JsonConvert.SerializeObject(jObject));
-            WriteJObject("Channel/Schedules/" + channelName + ".txt", "[]");
-            WriteJObject("Channel/UserList/" + channelName + ".txt", "[]");
+            fileIO.WriteJObject("Channel/" + channelName + ".txt", JsonConvert.SerializeObject(jObject));
+            fileIO.WriteJObject("Channel/Schedules/" + channelName + ".txt", "[]");
+            fileIO.WriteJObject("Channel/UserList/" + channelName + ".txt", "[]");
 
             TbChannelName.Text = null;
             CbColor.SelectedItem = null;
@@ -125,22 +126,5 @@ namespace Maeily_Windows
             }
         }
 
-        private void WriteJObject(string path, string msg)
-        {
-            StreamWriter writer = new StreamWriter(path);
-
-            writer.Write(msg);
-            writer.Close();
-        }
-
-        private void AddDirectory(string path)
-        {
-            DirectoryInfo directory = new DirectoryInfo(path);
-
-            if (!directory.Exists)
-            {
-                directory.Create();
-            }
-        }
     }
 }
