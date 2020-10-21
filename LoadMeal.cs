@@ -49,7 +49,16 @@ namespace Maeily_Windows
         public string getMeal(int time)
         {
             string str = callWebClient();
-            JObject jObject = JObject.Parse(str);
+            JObject jObject;
+
+            if (str.Contains("!DOCTYPE"))
+            {
+                return "점검 중";
+            }
+            else
+            {
+                jObject = JObject.Parse(str);
+            }
 
             var a = jObject["mealServiceDietInfo"][1];
             var b = a["row"][time].SelectToken("DDISH_NM");
