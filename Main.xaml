@@ -13,7 +13,7 @@
                 <StackPanel Orientation="Horizontal" Background="#F1F1F1" Height="120">
                     <Label Content="학생 정보" Margin="10, 40" FontSize="20" FontWeight="Bold"/>
                 </StackPanel>
-                <UniformGrid Height="215" Columns="2" Rows="2">
+                <UniformGrid x:Name="UGridChannels" Margin="20, 0" Height="215" Columns="2" Rows="2">
                 </UniformGrid>
                 <StackPanel Background="#F1F1F1" Height="150" Width="240" Margin="15">
                     <StackPanel Orientation="Horizontal">

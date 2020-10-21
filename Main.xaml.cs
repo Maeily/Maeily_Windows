@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Maeily_Windows.Controls;
+using System;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -17,7 +19,36 @@ namespace Maeily_Windows
             InitializeComponent();
             text.FontWeight = FontWeights.Bold;
             text.HorizontalAlignment = HorizontalAlignment.Center;
+            loadChannel();
             Meal();
+        }
+
+        public void loadChannel()
+        {
+            DirectoryInfo directory = new DirectoryInfo("Channel");
+            FileInfo[] fileInfos = directory.GetFiles("*.txt");
+
+            UGridChannels.Children.Clear();
+            if (directory.Exists)
+            {
+                if (fileInfos.Length != 0)
+                {
+                    foreach (var item in fileInfos)
+                    {
+                        if (UGridChannels.Children.Count == 4)
+                        {
+                            return;
+                        }
+                        else
+                        {
+                            ChannelUnit channelUnit = new ChannelUnit(item.Name.Replace(".txt", ""));
+                            channelUnit.Margin = new Thickness(10, 5, 10, 5);
+
+                            UGridChannels.Children.Add(channelUnit);
+                        }
+                    }
+                }
+            }
         }
 
         private void Meal()

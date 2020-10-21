@@ -39,7 +39,7 @@ namespace Maeily_Windows.Controls
                 }
             }
 
-            MessageBox.Show("X");
+            MessageBox.Show("채널에 가입되지 않았습니다!", "메일리");
         }
 
         private void ChannelUnit_Loaded(object sender, RoutedEventArgs e)
