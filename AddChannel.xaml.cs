@@ -43,6 +43,7 @@ namespace Maeily_Windows
             string file = string.Empty;
             fileInfo = new FileInfo("Channel/" + TbChannelName.Text + ".txt");
             JObject jObject = new JObject();
+            JArray jArray = new JArray();
             FileStream fs;
 
             string isPublic = "False";
@@ -98,7 +99,11 @@ namespace Maeily_Windows
 
             fileIO.WriteJObject("Channel/" + channelName + ".txt", JsonConvert.SerializeObject(jObject));
             fileIO.WriteJObject("Channel/Schedules/" + channelName + ".txt", "[]");
-            fileIO.WriteJObject("Channel/UserList/" + channelName + ".txt", "[]");
+
+            jObject.RemoveAll();
+            jObject.Add("id", ((App)Application.Current).userID);
+            jArray.Add(jObject);
+            fileIO.WriteJObject("Channel/UserList/" + channelName + ".txt", JsonConvert.SerializeObject(jArray));
 
             TbChannelName.Text = null;
             CbColor.SelectedItem = null;
@@ -125,6 +130,5 @@ namespace Maeily_Windows
                 CbColor.Foreground = (CbColor.SelectedItem as ComboBoxItem).Foreground;
             }
         }
-
     }
 }

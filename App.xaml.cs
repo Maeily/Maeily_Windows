@@ -9,9 +9,11 @@ namespace Maeily_Windows
     {
         public MainWindow mainWindow = new MainWindow();
         private SignIn signIn = new SignIn();
+        public string userID = string.Empty;
 
-        public void logIn()
+        public void logIn(string id)
         {
+            userID = id;
             signIn.Hide();
             mainWindow.Show();
         }

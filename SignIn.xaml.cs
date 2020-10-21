@@ -36,7 +36,7 @@ namespace Maeily_Windows
                     {
                         userID = item["id"].ToString();
 
-                        ((App) Application.Current).logIn();
+                        ((App)Application.Current).logIn(item["id"].ToString());
                         isTrue = true;
                     }
                 }
@@ -45,7 +45,6 @@ namespace Maeily_Windows
                 {
                     MessageBox.Show("존재하지 않는 회윈입니다!", "메일리");
                 }
-
             }
         }
 
