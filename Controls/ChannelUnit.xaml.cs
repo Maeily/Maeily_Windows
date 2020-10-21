@@ -26,8 +26,20 @@ namespace Maeily_Windows.Controls
 
         private void BtnChannelUnit_Click(object sender, RoutedEventArgs e)
         {
-            InChannel inChannel = new InChannel((sender as Button).Tag.ToString());
-            ((App)Application.Current).mainWindow.Frame.NavigationService.Navigate(inChannel);
+            StreamReader reader = new StreamReader("Channel/UserList/" + channelName + ".txt");
+            JArray jArray = JArray.Parse(reader.ReadToEnd());
+
+            foreach (JObject item in jArray)
+            {
+                if (((App)Application.Current).userID.Equals(item["id"].ToString()))
+                {
+                    InChannel inChannel = new InChannel((sender as Button).Tag.ToString());
+                    ((App)Application.Current).mainWindow.Frame.NavigationService.Navigate(inChannel);
+                    return;
+                }
+            }
+
+            MessageBox.Show("X");
         }
 
         private void ChannelUnit_Loaded(object sender, RoutedEventArgs e)
