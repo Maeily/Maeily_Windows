@@ -7,5 +7,18 @@ namespace Maeily_Windows
     /// </summary>
     public partial class App : Application
     {
+        public MainWindow mainWindow = new MainWindow();
+        private SignIn signIn = new SignIn();
+
+        public void logIn()
+        {
+            signIn.Hide();
+            mainWindow.Show();
+        }
+
+        private void Application_Startup(object sender, StartupEventArgs e)
+        {
+            signIn.Show();
+        }
     }
 }

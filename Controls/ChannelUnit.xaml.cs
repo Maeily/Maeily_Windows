@@ -27,8 +27,7 @@ namespace Maeily_Windows.Controls
         private void BtnChannelUnit_Click(object sender, RoutedEventArgs e)
         {
             InChannel inChannel = new InChannel((sender as Button).Tag.ToString());
-            ((MainWindow)System.Windows.Application.Current.MainWindow).
-                Frame.NavigationService.Navigate(inChannel);
+            ((App)Application.Current).mainWindow.Frame.NavigationService.Navigate(inChannel);
         }
 
         private void ChannelUnit_Loaded(object sender, RoutedEventArgs e)

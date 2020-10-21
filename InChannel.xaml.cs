@@ -80,8 +80,7 @@ namespace Maeily_Windows
         {
             Channel_Settings channel_Settings = new Channel_Settings(dateTime, channelName);
 
-            ((MainWindow)System.Windows.Application.Current.MainWindow).
-                Frame.NavigationService.Navigate(channel_Settings);
+            ((App) Application.Current).mainWindow.Frame.NavigationService.Navigate(channel_Settings);
         }
     }
 }

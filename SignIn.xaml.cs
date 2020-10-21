@@ -19,6 +19,7 @@ namespace Maeily_Windows
         private void BtnSubmit_Click(object sender, RoutedEventArgs e)
         {
             string userID = string.Empty;
+            bool isTrue = false;
             if (IdBox.Text.Equals("") || PasswordBox.Password.Equals(""))
             {
                 MessageBox.Show("입력 칸을 채워주세요!", "메일리");
@@ -35,18 +36,16 @@ namespace Maeily_Windows
                     {
                         userID = item["id"].ToString();
 
-                        MainWindow main = new MainWindow();
-
-                        main.LoadUser(item["id"].ToString());
-                        main.Show();
-                        Close();
-
-                        return;
+                        ((App) Application.Current).logIn();
+                        isTrue = true;
                     }
                 }
 
-                MessageBox.Show("존재하지 않는 유저입니다.", "메일리");
-                return;
+                if (!isTrue)
+                {
+                    MessageBox.Show("존재하지 않는 회윈입니다!", "메일리");
+                }
+
             }
         }
 
