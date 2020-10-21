@@ -39,8 +39,9 @@ namespace Maeily_Windows
 
         private void AddBtn_Click(object sender, RoutedEventArgs e)
         {
-            ((MainWindow) System.Windows.Application.Current.MainWindow).Frame.Source =
-                new Uri("AddChannel.xaml", UriKind.Relative);
+            AddChannel addChannel = new AddChannel();
+
+            ((App) Application.Current).mainWindow.Frame.NavigationService.Navigate(addChannel);
         }
     }
 }
