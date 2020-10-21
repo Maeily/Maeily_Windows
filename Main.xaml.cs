@@ -60,6 +60,7 @@ namespace Maeily_Windows
                             ChannelUnit channelUnit = new ChannelUnit(item.Name.Replace(".txt", ""));
                             channelUnit.Margin = new Thickness(5, 10, 5, 10);
 
+                            isJoined = false;
                             UGridChannels.Children.Add(channelUnit);
                         }
                     }

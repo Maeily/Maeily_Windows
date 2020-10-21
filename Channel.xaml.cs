@@ -47,6 +47,7 @@ namespace Maeily_Windows
                         {
                             ChannelUnit channelUnit = new ChannelUnit(item.Name.Replace(".txt", ""));
 
+                            isJoined = false;
                             UGridChannelList.Children.Add(channelUnit);
                         }
                     }
