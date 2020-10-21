@@ -1,7 +1,6 @@
 ﻿using Maeily_Windows.Controls;
-using System;
+using Newtonsoft.Json.Linq;
 using System.IO;
-using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -22,6 +21,9 @@ namespace Maeily_Windows
         {
             DirectoryInfo directory = new DirectoryInfo("Channel");
             FileInfo[] fileInfos = directory.GetFiles("*.txt");
+            StreamReader streamReader = null;
+            JArray jArray = new JArray();
+            bool isJoined = false;
 
             if (directory.Exists)
             {
@@ -29,9 +31,24 @@ namespace Maeily_Windows
                 {
                     foreach (var item in fileInfos)
                     {
-                        ChannelUnit channelUnit = new ChannelUnit(item.Name.Replace(".txt", ""));
+                        streamReader = new StreamReader("Channel/UserList/" + item.Name);
+                        jArray = JArray.Parse(streamReader.ReadToEnd());
 
-                        UGridChannelList.Children.Add(channelUnit);
+                        foreach (JObject data in jArray)
+                        {
+                            if (data["id"].ToString().Equals(((App)Application.Current).userID))
+                            {
+                                isJoined = true;
+                                break;
+                            }
+                        }
+
+                        if (isJoined)
+                        {
+                            ChannelUnit channelUnit = new ChannelUnit(item.Name.Replace(".txt", ""));
+
+                            UGridChannelList.Children.Add(channelUnit);
+                        }
                     }
                 }
             }
@@ -41,7 +58,7 @@ namespace Maeily_Windows
         {
             AddChannel addChannel = new AddChannel();
 
-            ((App) Application.Current).mainWindow.Frame.NavigationService.Navigate(addChannel);
+            ((App)Application.Current).mainWindow.Frame.NavigationService.Navigate(addChannel);
         }
     }
 }

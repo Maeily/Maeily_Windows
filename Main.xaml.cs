@@ -1,4 +1,5 @@
 ﻿using Maeily_Windows.Controls;
+using Newtonsoft.Json.Linq;
 using System;
 using System.IO;
 using System.Windows;
@@ -19,30 +20,45 @@ namespace Maeily_Windows
             InitializeComponent();
             text.FontWeight = FontWeights.Bold;
             text.HorizontalAlignment = HorizontalAlignment.Center;
-            loadChannel();
+            Loaded += Main_Loaded;
             Meal();
+        }
+
+        private void Main_Loaded(object sender, RoutedEventArgs e)
+        {
+            loadChannel();
         }
 
         public void loadChannel()
         {
             DirectoryInfo directory = new DirectoryInfo("Channel");
             FileInfo[] fileInfos = directory.GetFiles("*.txt");
+            StreamReader streamReader = null;
+            JArray jArray = new JArray();
+            bool isJoined = false;
 
-            UGridChannels.Children.Clear();
             if (directory.Exists)
             {
                 if (fileInfos.Length != 0)
                 {
                     foreach (var item in fileInfos)
                     {
-                        if (UGridChannels.Children.Count == 4)
+                        streamReader = new StreamReader("Channel/UserList/" + item.Name);
+                        jArray = JArray.Parse(streamReader.ReadToEnd());
+
+                        foreach (JObject data in jArray)
                         {
-                            return;
+                            if (data["id"].ToString().Equals(((App)Application.Current).userID))
+                            {
+                                isJoined = true;
+                                break;
+                            }
                         }
-                        else
+
+                        if (isJoined)
                         {
                             ChannelUnit channelUnit = new ChannelUnit(item.Name.Replace(".txt", ""));
-                            channelUnit.Margin = new Thickness(10, 5, 10, 5);
+                            channelUnit.Margin = new Thickness(5, 10, 5, 10);
 
                             UGridChannels.Children.Add(channelUnit);
                         }
