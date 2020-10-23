@@ -19,40 +19,7 @@ namespace Maeily_Windows
 
         private void Channel_Loaded(object sender, RoutedEventArgs e)
         {
-            DirectoryInfo directory = new DirectoryInfo("Channel");
-            FileInfo[] fileInfos = directory.GetFiles("*.txt");
-            StreamReader streamReader;
-            JArray jArray = new JArray();
-            bool isJoined = false;
-
-            if (directory.Exists)
-            {
-                if (fileInfos.Length != 0)
-                {
-                    foreach (var item in fileInfos)
-                    {
-                        streamReader = new StreamReader("Channel/UserList/" + item.Name);
-                        jArray = JArray.Parse(streamReader.ReadToEnd());
-
-                        foreach (JObject data in jArray)
-                        {
-                            if (data["id"].ToString().Equals(((App)Application.Current).userID))
-                            {
-                                isJoined = true;
-                                break;
-                            }
-                        }
-
-                        if (isJoined)
-                        {
-                            ChannelUnit channelUnit = new ChannelUnit(item.Name.Replace(".txt", ""));
-
-                            isJoined = false;
-                            UGridChannelList.Children.Add(channelUnit);
-                        }
-                    }
-                }
-            }
+            ((App) Application.Current).LoadChannel(ref UGridChannelList);
         }
 
         private void AddBtn_Click(object sender, RoutedEventArgs e)
