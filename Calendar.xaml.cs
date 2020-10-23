@@ -1,20 +1,9 @@
 ﻿using Maeily_Windows.Controls;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Maeily_Windows
 {
@@ -30,7 +19,7 @@ namespace Maeily_Windows
         {
             InitializeComponent();
 
-            Loaded += new RoutedEventHandler(Calendar_Loaded);
+            Loaded += Calendar_Loaded;
 
             AddContent(1, "테스트");
         }

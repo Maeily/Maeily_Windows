@@ -1,10 +1,10 @@
 ﻿<Page x:Class="Maeily_Windows.Channel"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:Maeily_Windows"
-      mc:Ignorable="d" 
+      mc:Ignorable="d"
       d:DesignHeight="520" d:DesignWidth="312"
       Title="Channel">
     <Grid>
@@ -13,7 +13,7 @@
             <UniformGrid x:Name="UGridChannelList" Margin="20" Height="340" Columns="2" Rows="4"></UniformGrid>
         </StackPanel>
         <Button x:Name="AddBtn" Height="60" Width="60" Margin="210, 400, 0, 0" Background="Transparent" BorderBrush="Transparent" Click="AddBtn_Click">
-            <Image Source="Resources/AddBtn.png"/>
+            <Image Source="Resources/AddBtn.png" />
         </Button>
     </Grid>
 </Page>

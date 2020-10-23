@@ -11,22 +11,22 @@
             <StackPanel Background="#B7DE4B" Width="90" DockPanel.Dock="Left">
                 <StackPanel.Resources>
                     <Style TargetType="Button">
-                        <Setter Property="FontSize" Value="20"/>
-                        <Setter Property="Foreground" Value="White"/>
-                        <Setter Property="FontWeight" Value="Bold"/>
-                        <Setter Property="Background" Value="#B7DE4B"/>
-                        <Setter Property="BorderThickness" Value="0"/>
+                        <Setter Property="FontSize" Value="20" />
+                        <Setter Property="Foreground" Value="White" />
+                        <Setter Property="FontWeight" Value="Bold" />
+                        <Setter Property="Background" Value="#B7DE4B" />
+                        <Setter Property="BorderThickness" Value="0" />
                     </Style>
                 </StackPanel.Resources>
-                <Button Content="메인" Margin="22, 40, 22, 8" Click="Main"/>
-                <Button Content="채널" Margin="22, 8" Click="Channel"/>
-                <Button Content="캘린더" Margin="10, 8" Click="Calender"/>
-                <Label Content="매일리" Margin="10, 240, 10, 15" FontSize="20" Foreground="White" FontWeight="Bold"/>
+                <Button Content="메인" Margin="22, 40, 22, 8" Click="Main" />
+                <Button Content="채널" Margin="22, 8" Click="Channel" />
+                <Button Content="캘린더" Margin="10, 8" Click="Calender" />
+                <Label Content="매일리" Margin="10, 240, 10, 15" FontSize="20" Foreground="White" FontWeight="Bold" />
                 <Button Height="30" Width="30" Click="Setting">
-                    <Image Source="Resources/Setting.png"/>
+                    <Image Source="Resources/Setting.png" />
                 </Button>
             </StackPanel>
-            <Frame Name="Frame" Source="Main.xaml" NavigationUIVisibility="Hidden"/>
+            <Frame Name="Frame" Source="Main.xaml" NavigationUIVisibility="Hidden" />
         </DockPanel>
     </Grid>
 </Window>

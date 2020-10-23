@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace Maeily_Windows
@@ -18,15 +17,15 @@ namespace Maeily_Windows
         public ChannelInfo()
         {
             InitializeComponent();
-            Loaded += new RoutedEventHandler(ChannelInfo_Loaded);
+            Loaded += ChannelInfo_Loaded;
         }
 
         private void ChannelInfo_Loaded(object sender, RoutedEventArgs args)
         {
-            AddUserProfile(new BitmapImage(new Uri("Resources/AddBtn.png", UriKind.Relative)), "1117 임경준");
+            AddUserProfile();
         }
 
-        private void AddUserProfile(ImageSource imgSrc, string userInfo)
+        private void AddUserProfile()
         {
             UserInfo user = new UserInfo(new User { imageSource = new BitmapImage(new Uri(@"/Resources/AddBtn.png", UriKind.Relative)), name = "테스트" });
 

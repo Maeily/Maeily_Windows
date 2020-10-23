@@ -1,32 +1,31 @@
 ﻿<Page x:Class="Maeily_Windows.Main"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:Maeily_Windows"
-      mc:Ignorable="d" 
+      mc:Ignorable="d"
       d:DesignHeight="520" d:DesignWidth="362"
       Title="Main">
     <Grid>
         <DockPanel>
             <StackPanel>
                 <StackPanel Orientation="Horizontal" Background="#F1F1F1" Height="120">
-                    <Label Content="학생 정보" Margin="10, 40" FontSize="20" FontWeight="Bold"/>
+                    <Label Content="학생 정보" Margin="10, 40" FontSize="20" FontWeight="Bold" />
                 </StackPanel>
                 <UniformGrid x:Name="UGridChannels" Margin="20, 0" Height="215" Columns="2" Rows="2">
                 </UniformGrid>
                 <StackPanel Background="#F1F1F1" Height="150" Width="240" Margin="15">
                     <StackPanel Orientation="Horizontal">
                         <Button Background="Transparent" BorderBrush="Transparent" Width="50" Margin="20, 0" Click="LeftButtonClick">
-                            <Polygon Points="10,10,20,3,20,17" Fill="#B7DE4B" Margin="-20,0"/>
+                            <Polygon Points="10,10,20,3,20,17" Fill="#B7DE4B" Margin="-20,0" />
                         </Button>
-                        <Label x:Name="LbTime" Content="시간" Margin="5,2,22,0" Foreground="#B7DE4B" FontSize="20" FontWeight="Bold"/>
+                        <Label x:Name="LbTime" Content="시간" Margin="5,2,22,0" Foreground="#B7DE4B" FontSize="20" FontWeight="Bold" />
                         <Button Background="Transparent" BorderBrush="Transparent" Width="50" Click="RightButtonClick">
-                            <Polygon Points="10,3,10,17,20,10" Fill="#B7DE4B"/>
+                            <Polygon Points="10,3,10,17,20,10" Fill="#B7DE4B" />
                         </Button>
                     </StackPanel>
                     <StackPanel x:Name="meal" Background="White" Width="200" Height="95">
-                        
                     </StackPanel>
                 </StackPanel>
             </StackPanel>

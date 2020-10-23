@@ -33,7 +33,7 @@ namespace Maeily_Windows
                     if (IdBox.Text.Equals(item["id"].ToString()) &&
                         PasswordBox.Password.Equals(item["pwd"].ToString()))
                     {
-                        ((App)Application.Current).logIn(item["id"].ToString());
+                        ((App)Application.Current).LogIn(item["id"].ToString());
                         isTrue = true;
                     }
                 }

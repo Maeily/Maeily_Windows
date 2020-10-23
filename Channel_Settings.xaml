@@ -1,34 +1,34 @@
 ﻿<Page x:Class="Maeily_Windows.Channel_Settings"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:Maeily_Windows"
-      mc:Ignorable="d" 
+      mc:Ignorable="d"
       d:DesignHeight="520" d:DesignWidth="312"
       Title="Channel_Settings">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="5*"/>
-            <RowDefinition Height="1*"/>
+            <RowDefinition Height="5*" />
+            <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
 
-        <ListView x:Name="ListSchedules" Grid.Row="0" 
-                  BorderBrush="Transparent" Margin="0, 20"/>
+        <ListView x:Name="ListSchedules" Grid.Row="0"
+                  BorderBrush="Transparent" Margin="0, 20" />
 
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="3*"/>
-                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="1*" />
             </Grid.ColumnDefinitions>
 
             <TextBox x:Name="TbContent" Width="150" Height="20" Visibility="Hidden"
-                     HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0"/>
+                     HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0" />
 
             <Button x:Name="BtnAddContent" Height="60" Width="60" Background="Transparent"
-                    BorderBrush="Transparent" Grid.Column="1" 
+                    BorderBrush="Transparent" Grid.Column="1"
                     HorizontalAlignment="Center" VerticalAlignment="Center">
-                <Image x:Name="ImgBtn" Source="Resources/AddBtn.png"/>
+                <Image x:Name="ImgBtn" Source="Resources/AddBtn.png" />
             </Button>
         </Grid>
     </Grid>

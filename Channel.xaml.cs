@@ -21,7 +21,7 @@ namespace Maeily_Windows
         {
             DirectoryInfo directory = new DirectoryInfo("Channel");
             FileInfo[] fileInfos = directory.GetFiles("*.txt");
-            StreamReader streamReader = null;
+            StreamReader streamReader;
             JArray jArray = new JArray();
             bool isJoined = false;
 

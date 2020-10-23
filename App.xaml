@@ -22,10 +22,10 @@
             </Border>
             <ControlTemplate.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="BorderBrush" Value="#DFDFDF"/>
+                    <Setter Property="BorderBrush" Value="#DFDFDF" />
                 </Trigger>
                 <Trigger Property="IsMouseOver" Value="False">
-                    <Setter Property="BorderBrush" Value="#F1F1F1"/>
+                    <Setter Property="BorderBrush" Value="#F1F1F1" />
                 </Trigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>

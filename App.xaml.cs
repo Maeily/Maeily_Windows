@@ -11,7 +11,7 @@ namespace Maeily_Windows
         private SignIn signIn = new SignIn();
         public string userID = string.Empty;
 
-        public void logIn(string id)
+        public void LogIn(string id)
         {
             userID = id;
             signIn.Hide();
