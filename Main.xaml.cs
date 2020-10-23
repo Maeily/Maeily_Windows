@@ -26,46 +26,7 @@ namespace Maeily_Windows
 
         private void MainLoaded(object sender, RoutedEventArgs e)
         {
-            LoadChannel();
-        }
-
-        public void LoadChannel()
-        {
-            DirectoryInfo directory = new DirectoryInfo("Channel");
-            FileInfo[] fileInfos = directory.GetFiles("*.txt");
-            StreamReader streamReader = null;
-            JArray jArray = new JArray();
-            bool isJoined = false;
-
-            if (directory.Exists)
-            {
-                if (fileInfos.Length != 0)
-                {
-                    foreach (var item in fileInfos)
-                    {
-                        streamReader = new StreamReader("Channel/UserList/" + item.Name);
-                        jArray = JArray.Parse(streamReader.ReadToEnd());
-
-                        foreach (JObject data in jArray)
-                        {
-                            if (data["id"].ToString().Equals(((App)Application.Current).userID))
-                            {
-                                isJoined = true;
-                                break;
-                            }
-                        }
-
-                        if (isJoined)
-                        {
-                            ChannelUnit channelUnit = new ChannelUnit(item.Name.Replace(".txt", ""));
-                            channelUnit.Margin = new Thickness(5, 10, 5, 10);
-
-                            isJoined = false;
-                            UGridChannels.Children.Add(channelUnit);
-                        }
-                    }
-                }
-            }
+            ((App) Application.Current).LoadChannel(ref UGridChannels);
         }
 
         private void MakeMeal()
