@@ -34,10 +34,10 @@
     <Grid Margin="15">
         <StackPanel Margin="0,50">
             <Label Content="아이디" />
-            <TextBox Name="IdBox" />
+            <TextBox x:Name="IdBox" MaxLength="12"/>
             <Line />
             <Label Content="비밀번호" />
-            <PasswordBox Name="PasswordBox" />
+            <PasswordBox x:Name="PasswordBox" MaxLength="16" />
             <Line />
             <Button Margin="0,20" Height="60" Width="349" Background="#e0e0e0" BorderThickness="0"
                     Content="제출" x:Name="BtnSubmit" />

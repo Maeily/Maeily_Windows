@@ -19,15 +19,15 @@
         <StackPanel Grid.Row="1" Margin="16, 40, 0, 0">
             <StackPanel Orientation="Horizontal">
                 <Label Width="110" FontSize="15" Foreground="#B0B0B0">이름</Label>
-                <TextBox x:Name="TbName" Width="160" Style="{StaticResource StyleRoundBox}" />
+                <TextBox x:Name="TbName" Width="160" MaxLength="12" Style="{StaticResource StyleRoundBox}" />
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0, 30">
                 <Label Width="110" FontSize="15" Foreground="#B0B0B0">비밀번호</Label>
-                <TextBox x:Name="TbPwd" Width="160" Style="{StaticResource StyleRoundBox}" />
+                <PasswordBox x:Name="TbPwd" Width="160" MaxLength="16" Style="{StaticResource StyleRoundPwdBox}" />
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Label Width="110" FontSize="15" Foreground="#B0B0B0">비밀번호 확인</Label>
-                <TextBox x:Name="TbRePwd" Width="160" Style="{StaticResource StyleRoundBox}" />
+                <PasswordBox x:Name="TbRePwd" Width="160" MaxLength="16" Style="{StaticResource StyleRoundPwdBox}" />
             </StackPanel>
             <Button Name="BtnSubmit" Height="35" Margin="30, 15" Background="#F1F1F1"
                     Template="{StaticResource RoundBtn}" Content="변경" />
