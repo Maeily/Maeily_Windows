@@ -12,15 +12,15 @@ namespace Maeily_Windows
     /// </summary>
     public partial class Main : Page
     {
-        private int myPage;
+        private int curMealNum;
+        private string[] curMeal = new string[3];
         private TextBlock text = new TextBlock();
 
         public Main()
         {
             InitializeComponent();
-            text.FontWeight = FontWeights.Bold;
-            text.HorizontalAlignment = HorizontalAlignment.Center;
             Loaded += Main_Loaded;
+            Make_Meal();
             Meal();
         }
 
@@ -68,51 +68,58 @@ namespace Maeily_Windows
             }
         }
 
+        private void Make_Meal()
+        {
+            curMeal[0] = LoadMeal.loadMeal.getMeal(0);
+            curMeal[1] = LoadMeal.loadMeal.getMeal(1);
+            curMeal[2] = LoadMeal.loadMeal.getMeal(2);
+        }
+
         private void Meal()
         {
             string now = DateTime.Now.ToString("HH");
 
             if (double.Parse(now) >= 19 && double.Parse(now) < 8)
             {
-                myPage = 2;
+                curMealNum = 0;
             }
             else if (double.Parse(now) >= 8 && double.Parse(now) < 13)
             {
-                myPage = 1;
+                curMealNum = 1;
             }
             else
             {
-                myPage = 2;
+                curMealNum = 2;
             }
-            text.Text = LoadMeal.loadMeal.getMeal(myPage);
-            ChangeLbTimeText(myPage);
+            ChangeLbTimeText(curMealNum);
             meal.Children.Clear();
+            text.Text = curMeal[curMealNum];
             meal.Children.Add(text);
         }
 
         private void RightButton_Click(object sender, RoutedEventArgs e)
         {
-            if (myPage >= 2)
+            if (curMealNum >= 2)
             {
                 return;
             }
-            myPage++;
-            text.Text = LoadMeal.loadMeal.getMeal(myPage);
-            ChangeLbTimeText(myPage);
+            curMealNum++;
+            ChangeLbTimeText(curMealNum);
             meal.Children.Clear();
+            text.Text = curMeal[curMealNum];
             meal.Children.Add(text);
         }
 
         private void LeftButton_Click(object sender, RoutedEventArgs e)
         {
-            if (myPage <= 0)
+            if (curMealNum <= 0)
             {
                 return;
             }
-            myPage--;
-            text.Text = LoadMeal.loadMeal.getMeal(myPage);
-            ChangeLbTimeText(myPage);
+            curMealNum--;
+            ChangeLbTimeText(curMealNum);
             meal.Children.Clear();
+            text.Text = curMeal[curMealNum];
             meal.Children.Add(text);
         }
 
