@@ -17,7 +17,7 @@ namespace Maeily_Windows
             this.targetURL = targetURL;
         }
 
-        public string callWebClient()
+        public string CallWebClient()
         {
             string result = string.Empty;
 
@@ -46,9 +46,9 @@ namespace Maeily_Windows
             return result;
         }
 
-        public string getMeal(int time)
+        public string GetMeal(int time)
         {
-            string str = callWebClient();
+            string str = CallWebClient();
             JObject jObject;
 
             if (str.Contains("!DOCTYPE"))

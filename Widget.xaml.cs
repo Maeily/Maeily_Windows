@@ -11,10 +11,10 @@ namespace Maeily_Windows
         public Widget()
         {
             InitializeComponent();
-            Loaded += Widget_Loaded;
+            Loaded += WidgetLoaded;
         }
 
-        private void Widget_Loaded(object sender, RoutedEventArgs e)
+        private void WidgetLoaded(object sender, RoutedEventArgs e)
         {
             InitWorkerW();
             InitOnDisplaySettingChanged();

@@ -15,11 +15,11 @@ namespace Maeily_Windows
         {
             InitializeComponent();
             dateTime = DateTime.UtcNow;
-            StateChanged += MainWindow_StateChanged;
+            StateChanged += MainWindowStateChanged;
             LoadMeal loadMeal = new LoadMeal("https://open.neis.go.kr/hub/mealServiceDietInfo?ATPT_OFCDC_SC_CODE=D10&SD_SCHUL_CODE=7240393&MLSV_FROM_YMD=" + dateTime.ToString("yyyyMMdd") + "&MLSV_TO_YMD=" + dateTime.ToString("yyyyMMdd") + "&Type=json");
         }
 
-        private void MainWindow_StateChanged(object sender, EventArgs e)
+        private void MainWindowStateChanged(object sender, EventArgs e)
         {
             if (WindowState == WindowState.Minimized)
             {

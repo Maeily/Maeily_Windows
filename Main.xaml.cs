@@ -19,17 +19,17 @@ namespace Maeily_Windows
         public Main()
         {
             InitializeComponent();
-            Loaded += Main_Loaded;
-            Make_Meal();
+            Loaded += MainLoaded;
+            MakeMeal();
             Meal();
         }
 
-        private void Main_Loaded(object sender, RoutedEventArgs e)
+        private void MainLoaded(object sender, RoutedEventArgs e)
         {
-            loadChannel();
+            LoadChannel();
         }
 
-        public void loadChannel()
+        public void LoadChannel()
         {
             DirectoryInfo directory = new DirectoryInfo("Channel");
             FileInfo[] fileInfos = directory.GetFiles("*.txt");
@@ -68,11 +68,11 @@ namespace Maeily_Windows
             }
         }
 
-        private void Make_Meal()
+        private void MakeMeal()
         {
-            curMeal[0] = LoadMeal.loadMeal.getMeal(0);
-            curMeal[1] = LoadMeal.loadMeal.getMeal(1);
-            curMeal[2] = LoadMeal.loadMeal.getMeal(2);
+            curMeal[0] = LoadMeal.loadMeal.GetMeal(0);
+            curMeal[1] = LoadMeal.loadMeal.GetMeal(1);
+            curMeal[2] = LoadMeal.loadMeal.GetMeal(2);
         }
 
         private void Meal()
@@ -97,7 +97,7 @@ namespace Maeily_Windows
             meal.Children.Add(text);
         }
 
-        private void RightButton_Click(object sender, RoutedEventArgs e)
+        private void RightButtonClick(object sender, RoutedEventArgs e)
         {
             if (curMealNum >= 2)
             {
@@ -110,7 +110,7 @@ namespace Maeily_Windows
             meal.Children.Add(text);
         }
 
-        private void LeftButton_Click(object sender, RoutedEventArgs e)
+        private void LeftButtonClick(object sender, RoutedEventArgs e)
         {
             if (curMealNum <= 0)
             {

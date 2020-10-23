@@ -13,10 +13,10 @@ namespace Maeily_Windows
         {
             InitializeComponent();
             Loaded += SignIn_Loaded;
-            BtnSubmit.Click += BtnSubmit_Click;
+            BtnSubmit.Click += BtnSubmitClick;
         }
 
-        private void BtnSubmit_Click(object sender, RoutedEventArgs e)
+        private void BtnSubmitClick(object sender, RoutedEventArgs e)
         {
             bool isTrue = false;
             if (IdBox.Text.Equals("") || PasswordBox.Password.Equals(""))

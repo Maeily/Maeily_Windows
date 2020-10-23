@@ -19,10 +19,10 @@ namespace Maeily_Windows
 
         private void InitOnDisplaySettingChanged()
         {
-            SystemEvents.DisplaySettingsChanged += SystemEvents_DisplaySettingsChanged;
+            SystemEvents.DisplaySettingsChanged += SystemEventsDisplaySettingsChanged;
         }
 
-        private void SystemEvents_DisplaySettingsChanged(object sender, EventArgs e)
+        private void SystemEventsDisplaySettingsChanged(object sender, EventArgs e)
         {
             Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(FillDisplay));
         }
