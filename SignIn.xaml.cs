@@ -18,7 +18,6 @@ namespace Maeily_Windows
 
         private void BtnSubmit_Click(object sender, RoutedEventArgs e)
         {
-            string userID = string.Empty;
             bool isTrue = false;
             if (IdBox.Text.Equals("") || PasswordBox.Password.Equals(""))
             {
@@ -34,8 +33,6 @@ namespace Maeily_Windows
                     if (IdBox.Text.Equals(item["id"].ToString()) &&
                         PasswordBox.Password.Equals(item["pwd"].ToString()))
                     {
-                        userID = item["id"].ToString();
-
                         ((App)Application.Current).logIn(item["id"].ToString());
                         isTrue = true;
                     }
