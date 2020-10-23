@@ -22,6 +22,28 @@ namespace Maeily_Windows
             Loaded += MainLoaded;
             MakeMeal();
             Meal();
+            ButtomVisibility();
+        }
+
+        private void ButtomVisibility()
+        {
+            if(curMealNum == 0)
+            {
+                Lbutton.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                Lbutton.Visibility = Visibility.Visible;
+            }
+
+            if (curMealNum == 2)
+            {
+                Rbutton.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                Rbutton.Visibility = Visibility.Visible;
+            }
         }
 
         private void MainLoaded(object sender, RoutedEventArgs e)
@@ -99,28 +121,22 @@ namespace Maeily_Windows
 
         private void RightButtonClick(object sender, RoutedEventArgs e)
         {
-            if (curMealNum >= 2)
-            {
-                return;
-            }
             curMealNum++;
             ChangeLbTimeText(curMealNum);
             meal.Children.Clear();
             text.Text = curMeal[curMealNum];
             meal.Children.Add(text);
+            ButtomVisibility();
         }
 
         private void LeftButtonClick(object sender, RoutedEventArgs e)
         {
-            if (curMealNum <= 0)
-            {
-                return;
-            }
             curMealNum--;
             ChangeLbTimeText(curMealNum);
             meal.Children.Clear();
             text.Text = curMeal[curMealNum];
             meal.Children.Add(text);
+            ButtomVisibility();
         }
 
         private void ChangeLbTimeText(int n)
