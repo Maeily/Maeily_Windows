@@ -29,12 +29,13 @@ namespace Maeily_Windows
         private Channel()
         {
             InitializeComponent();
-
-            ChannelLoad();
+            Loaded += Channel_Loaded;
         }
 
-        private void ChannelLoad()
+        private void Channel_Loaded(object sender, RoutedEventArgs e)
         {
+            UGridChannel.Children.Clear();
+
             channelUnits = ((App)Application.Current).LoadChannel("Channel");
 
             foreach (ChannelUnit item in channelUnits)
