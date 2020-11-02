@@ -33,12 +33,11 @@ namespace Maeily_Windows
         {
             InitializeComponent();
 
-            Loaded += Calendar_Loaded;
-
+            CalendarLoad();
             AddContent(1, "테스트");
         }
 
-        private void Calendar_Loaded(object sender, RoutedEventArgs args)
+        private void CalendarLoad()
         {
             int i;
 
