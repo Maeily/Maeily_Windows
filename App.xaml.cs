@@ -1,8 +1,8 @@
 ﻿using Maeily_Windows.Controls;
 using Newtonsoft.Json.Linq;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Windows;
-using System.Windows.Controls.Primitives;
 
 namespace Maeily_Windows
 {
@@ -27,8 +27,9 @@ namespace Maeily_Windows
             signIn.Show();
         }
 
-        public void LoadChannel(ref UniformGrid UGrid)
+        public ObservableCollection<ChannelUnit> LoadChannel(string sender)
         {
+            ObservableCollection<ChannelUnit> channelUnits = new ObservableCollection<ChannelUnit>();
             DirectoryInfo directory = new DirectoryInfo("Channel");
             FileInfo[] fileInfos = directory.GetFiles("*.txt");
             StreamReader streamReader = null;
@@ -55,16 +56,26 @@ namespace Maeily_Windows
 
                         if (isJoined)
                         {
+                            if (sender.Equals("Main"))
+                            {
+                                if (channelUnits.Count >= 4)
+                                {
+                                    return channelUnits;
+                                }
+                            }
+
                             ChannelUnit channelUnit = new ChannelUnit(item.Name.Replace(".txt", ""));
                             channelUnit.Width = 130;
                             channelUnit.Height = 90;
 
                             isJoined = false;
-                            UGrid.Children.Add(channelUnit);
+                            channelUnits.Add(channelUnit);
                         }
                     }
                 }
             }
+
+            return channelUnits;
         }
     }
 }

@@ -48,7 +48,7 @@ namespace Maeily_Windows
 
         private void MainLoaded(object sender, RoutedEventArgs e)
         {
-            ((App) Application.Current).LoadChannel(ref UGridChannels);
+            ItemsChannel.ItemsSource = ((App) Application.Current).LoadChannel("Main");
         }
 
         private void MakeMeal()
