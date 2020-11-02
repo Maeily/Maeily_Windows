@@ -15,8 +15,22 @@ namespace Maeily_Windows
         private int curMealNum;
         private string[] curMeal = new string[3];
         private TextBlock text = new TextBlock();
+        private static Main instance = null;
 
-        public Main()
+        public static Main Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new Main();
+                }
+
+                return instance;
+            }
+        }
+
+        private Main()
         {
             InitializeComponent();
             Loaded += MainLoaded;

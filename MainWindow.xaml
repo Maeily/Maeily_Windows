@@ -18,15 +18,15 @@
                         <Setter Property="BorderThickness" Value="0" />
                     </Style>
                 </StackPanel.Resources>
-                <Button Content="메인" Margin="22, 40, 22, 8" Click="Main" />
-                <Button Content="채널" Margin="22, 8" Click="Channel" />
-                <Button Content="캘린더" Margin="10, 8" Click="Calender" />
+                <Button Content="메인" Margin="22, 40, 22, 8" Click="Main_Click" />
+                <Button Content="채널" Margin="22, 8" Click="Channel_Click" />
+                <Button Content="캘린더" Margin="10, 8" Click="Calender_Click" />
                 <Label Content="매일리" Margin="10, 240, 10, 15" FontSize="20" Foreground="White" FontWeight="Bold" />
-                <Button Height="30" Width="30" Click="Setting">
+                <Button Height="30" Width="30" Click="Setting_Click">
                     <Image Source="Resources/Setting.png" />
                 </Button>
             </StackPanel>
-            <Frame Name="Frame" Source="Main.xaml" NavigationUIVisibility="Hidden" />
+            <Frame Name="Frame" NavigationUIVisibility="Hidden" />
         </DockPanel>
     </Grid>
 </Window>

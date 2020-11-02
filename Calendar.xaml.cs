@@ -14,8 +14,22 @@ namespace Maeily_Windows
     {
         private DateTime dateTime = DateTime.UtcNow;
         private List<CalendarContent> contents = new List<CalendarContent>();
+        private static Calendar instance = null;
 
-        public Calendar()
+        public static Calendar Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new Calendar();
+                }
+
+                return instance;
+            }
+        }
+
+        private Calendar()
         {
             InitializeComponent();
 

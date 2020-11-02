@@ -16,7 +16,13 @@ namespace Maeily_Windows
             InitializeComponent();
             dateTime = DateTime.UtcNow;
             StateChanged += MainWindowStateChanged;
+            Loaded += MainWindow_Loaded;
             LoadMeal loadMeal = new LoadMeal("https://open.neis.go.kr/hub/mealServiceDietInfo?ATPT_OFCDC_SC_CODE=D10&SD_SCHUL_CODE=7240393&MLSV_FROM_YMD=" + dateTime.ToString("yyyyMMdd") + "&MLSV_TO_YMD=" + dateTime.ToString("yyyyMMdd") + "&Type=json");
+        }
+
+        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            ChangePage(Main.Instance);
         }
 
         private void MainWindowStateChanged(object sender, EventArgs e)
@@ -31,29 +37,29 @@ namespace Maeily_Windows
             }
         }
 
-        private void Main(object sender, RoutedEventArgs e)
+        private void Main_Click(object sender, RoutedEventArgs e)
         {
-            ChangePage("Main.xaml");
+            Frame.NavigationService.Navigate(Main.Instance);
         }
 
-        private void Channel(object sender, RoutedEventArgs e)
+        private void Channel_Click(object sender, RoutedEventArgs e)
         {
-            ChangePage("Channel.xaml");
+            ChangePage(Channel.Instance);
         }
 
-        private void Calender(object sender, RoutedEventArgs e)
+        private void Calender_Click(object sender, RoutedEventArgs e)
         {
-            ChangePage("Calendar.xaml");
+            ChangePage(Calendar.Instance);
         }
 
-        private void Setting(object sender, RoutedEventArgs e)
+        private void Setting_Click(object sender, RoutedEventArgs e)
         {
-            ChangePage("Settings.xaml");
+            ChangePage(Settings.Instance);
         }
 
-        public void ChangePage(string target)
+        public void ChangePage(object page)
         {
-            Frame.Source = new Uri(target, UriKind.Relative);
+            Frame.NavigationService.Navigate(page);
         }
 
         public void LoadUser(string id)

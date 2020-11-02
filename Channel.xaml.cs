@@ -11,8 +11,22 @@ namespace Maeily_Windows
     public partial class Channel : Page
     {
         public ObservableCollection<ChannelUnit> channelUnits = new ObservableCollection<ChannelUnit>();
+        private static Channel instance = null;
 
-        public Channel()
+        public static Channel Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new Channel();
+                }
+
+                return instance;
+            }
+        }
+
+        private Channel()
         {
             InitializeComponent();
             Loaded += Channel_Loaded;
