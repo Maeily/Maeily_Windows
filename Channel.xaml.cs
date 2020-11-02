@@ -29,10 +29,11 @@ namespace Maeily_Windows
         private Channel()
         {
             InitializeComponent();
-            Loaded += Channel_Loaded;
+
+            ChannelLoad();
         }
 
-        private void Channel_Loaded(object sender, RoutedEventArgs e)
+        private void ChannelLoad()
         {
             channelUnits = ((App)Application.Current).LoadChannel("Channel");
 
