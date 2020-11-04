@@ -10,6 +10,6 @@
     <StackPanel>
         <TextBox x:Name="TbSearch" Width="250" Style="{StaticResource StyleRoundBox}" Margin="0, 20, 0, 0" />
         <ListView Grid.Row="1" Margin="20" x:Name="Userlist" BorderBrush="Transparent" Height="400"
-                  ScrollViewer.VerticalScrollBarVisibility="Auto" />
+                  ScrollViewer.VerticalScrollBarVisibility="Auto" Background="Transparent" />
     </StackPanel>
 </Page>

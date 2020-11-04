@@ -1,9 +1,9 @@
 ﻿using Maeily_Windows.Controls;
-using System;
+using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media.Imaging;
 
 namespace Maeily_Windows
 {
@@ -13,11 +13,14 @@ namespace Maeily_Windows
     public partial class ChannelInfo : Page
     {
         private List<UserInfo> Users = new List<UserInfo>();
+        private string channelName = string.Empty;
 
-        public ChannelInfo()
+        public ChannelInfo(string channelName)
         {
             InitializeComponent();
             Loaded += ChannelInfo_Loaded;
+
+            this.channelName = channelName;
         }
 
         private void ChannelInfo_Loaded(object sender, RoutedEventArgs args)
@@ -27,11 +30,18 @@ namespace Maeily_Windows
 
         private void AddUserProfile()
         {
-            UserInfo user = new UserInfo(new User { imageSource = new BitmapImage(new Uri(@"/Resources/AddBtn.png", UriKind.Relative)), name = "테스트" });
+            JArray jArray = new JArray();
+            //            UserInfo user = new UserInfo(new User { imageSource = new BitmapImage(new Uri(@"/Resources/AddBtn.png", UriKind.Relative)), name = "테스트" });
+            //
+            //            Users.Add(user);
+            //            Userlist.ItemsSource = Users;
+            //            Userlist.Items.Refresh();
+            StreamReader reader = new StreamReader("Channel/UserList/" + channelName + ".txt");
 
-            Users.Add(user);
-            Userlist.ItemsSource = Users;
-            Userlist.Items.Refresh();
+            jArray = JArray.Parse(reader.ReadToEnd());
+
+            MessageBox.Show(jArray.ToString());
+            reader.Close();
         }
     }
 }

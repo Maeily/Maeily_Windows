@@ -24,6 +24,14 @@ namespace Maeily_Windows
             Loaded += new RoutedEventHandler(InChannel_Loaded);
             BtnLeft.Click += new RoutedEventHandler(ChangeDate);
             BtnRight.Click += new RoutedEventHandler(ChangeDate);
+            BtnShowChInfo.Click += BtnShowChInfo_Click;
+        }
+
+        private void BtnShowChInfo_Click(object sender, RoutedEventArgs e)
+        {
+            ChannelInfo channelInfo = new ChannelInfo(channelName);
+
+            ((App)Application.Current).mainWindow.Frame.NavigationService.Navigate(channelInfo);
         }
 
         private void ChangeDate(object sender, RoutedEventArgs args)
