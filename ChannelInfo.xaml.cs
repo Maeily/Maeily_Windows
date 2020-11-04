@@ -1,9 +1,11 @@
 ﻿using Maeily_Windows.Controls;
 using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media.Imaging;
 
 namespace Maeily_Windows
 {
@@ -31,16 +33,22 @@ namespace Maeily_Windows
         private void AddUserProfile()
         {
             JArray jArray = new JArray();
-            //            UserInfo user = new UserInfo(new User { imageSource = new BitmapImage(new Uri(@"/Resources/AddBtn.png", UriKind.Relative)), name = "테스트" });
-            //
-            //            Users.Add(user);
-            //            Userlist.ItemsSource = Users;
-            //            Userlist.Items.Refresh();
             StreamReader reader = new StreamReader("Channel/UserList/" + channelName + ".txt");
 
             jArray = JArray.Parse(reader.ReadToEnd());
 
-            MessageBox.Show(jArray.ToString());
+            foreach (JObject item in jArray)
+            {
+                Users.Add(new UserInfo(new User
+                {
+                    imageSource = new BitmapImage(
+                        new Uri(@"/Resources/AddBtn.png", UriKind.Relative)),
+                    name = item["id"].ToString()
+                }));
+            }
+
+            Userlist.ItemsSource = Users;
+            Userlist.Items.Refresh();
             reader.Close();
         }
     }
