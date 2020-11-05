@@ -98,7 +98,6 @@ namespace Maeily_Windows
 
         private void AddContent(CalendarContent content)
         {
-
             contents.Add(content);
 
             ListContents.ItemsSource = contents;

@@ -25,22 +25,22 @@
             <GroupBox x:Name="InGroup" Visibility="Hidden">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition/>
+                        <RowDefinition />
+                        <RowDefinition />
                     </Grid.RowDefinitions>
                     <TextBox x:Name="TbContent" Width="150" Height="20" Grid.ColumnSpan="3"
                      HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0" />
                     <Label Grid.Row="1" Grid.Column="0" Margin="8,8,0,0">1순위</Label>
-                    <RadioButton x:Name="radio1" Grid.Row="1" Grid.Column="0" Margin="50,15,0,0"/>
+                    <RadioButton x:Name="radio1" Grid.Row="1" Grid.Column="0" Margin="50,15,0,0" />
                     <Label Grid.Row="1" Grid.Column="1" Margin="8,8,0,0">2순위</Label>
-                    <RadioButton x:Name="radio2" Grid.Row="1" Grid.Column="1" Margin="50,15,0,0"/>
+                    <RadioButton x:Name="radio2" Grid.Row="1" Grid.Column="1" Margin="50,15,0,0" />
                     <Label Grid.Row="1" Grid.Column="2" Margin="8,8,0,0">3순위</Label>
-                    <RadioButton x:Name="radio3" Grid.Row="1" Grid.Column="2" Margin="50,15,0,0"/>
+                    <RadioButton x:Name="radio3" Grid.Row="1" Grid.Column="2" Margin="50,15,0,0" />
                 </Grid>
             </GroupBox>
 

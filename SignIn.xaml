@@ -34,7 +34,7 @@
     <Grid Margin="15">
         <StackPanel Margin="0,50">
             <Label Content="아이디" />
-            <TextBox x:Name="IdBox" MaxLength="12"/>
+            <TextBox x:Name="IdBox" MaxLength="12" />
             <Line />
             <Label Content="비밀번호" />
             <PasswordBox x:Name="PasswordBox" MaxLength="16" />

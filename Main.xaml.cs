@@ -1,7 +1,4 @@
-﻿using Maeily_Windows.Controls;
-using Newtonsoft.Json.Linq;
-using System;
-using System.IO;
+﻿using System;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -41,7 +38,7 @@ namespace Maeily_Windows
 
         private void ButtomVisibility()
         {
-            if(curMealNum == 0)
+            if (curMealNum == 0)
             {
                 Lbutton.Visibility = Visibility.Hidden;
             }
@@ -62,7 +59,7 @@ namespace Maeily_Windows
 
         private void MainLoaded(object sender, RoutedEventArgs e)
         {
-            ItemsChannel.ItemsSource = ((App) Application.Current).LoadChannel("Main");
+            ItemsChannel.ItemsSource = ((App)Application.Current).LoadChannel("Main");
         }
 
         private void MakeMeal()

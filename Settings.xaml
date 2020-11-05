@@ -33,7 +33,7 @@
                     Template="{StaticResource RoundBtn}" Content="변경" />
             <Label Margin="0, 20, 0, 0" HorizontalAlignment="Center"
                    Foreground="#5E5E5E" FontWeight="Bold">다크 모드</Label>
-            <CheckBox x:Name="ChkDarkMode" HorizontalAlignment="Center" Margin="10" IsEnabled="False"/>
+            <CheckBox x:Name="ChkDarkMode" HorizontalAlignment="Center" Margin="10" IsEnabled="False" />
             <Label Foreground="#656565" FontSize="15" Margin="0, 15, 0, 0"
                    HorizontalAlignment="Center">문의: foxboxr@dgsw.hs.kr</Label>
         </StackPanel>
