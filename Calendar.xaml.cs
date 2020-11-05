@@ -13,9 +13,9 @@ namespace Maeily_Windows
     public partial class Calendar : Page
     {
         private DateTime dateTime = DateTime.UtcNow;
-        private List<CalendarContent> contents = new List<CalendarContent>();
+        private List<CalendarContent> contents = new List<CalendarContent>();   //표시되는 일정
         private static Calendar instance = null;
-        private List<List<CalendarContent>> scuedules = new List<List<CalendarContent>>();
+        private List<List<CalendarContent>> schedules = new List<List<CalendarContent>>();  //도든 채널의 일정
 
         public static Calendar Instance
         {
@@ -40,8 +40,24 @@ namespace Maeily_Windows
 
         private void Calendar_Loaded(object sender, RoutedEventArgs e)
         {
-            scuedules.Clear();
-            scuedules = ((App)Application.Current).scheduleList;
+            schedules.Clear();
+            schedules = ((App)Application.Current).scheduleList;
+            LoadSchedules();
+        }
+
+        private void LoadSchedules()
+        {
+            foreach (var item in schedules)
+            {
+                foreach (CalendarContent data in item)
+                {
+                    if (data.dateTime.ToString("yyyy MM dd") ==
+                        DateTime.UtcNow.ToString("yyyy MM dd"))
+                    {
+                        AddContent(data);
+                    }
+                }
+            }
         }
 
         private void CalendarLoad()
@@ -80,9 +96,8 @@ namespace Maeily_Windows
             }
         }
 
-        private void AddContent(int important, DateTime time, string contentStr)
+        private void AddContent(CalendarContent content)
         {
-            CalendarContent content = new CalendarContent(1, time, contentStr);
 
             contents.Add(content);
 
