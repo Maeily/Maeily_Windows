@@ -15,6 +15,7 @@ namespace Maeily_Windows
         private DateTime dateTime = DateTime.UtcNow;
         private List<CalendarContent> contents = new List<CalendarContent>();
         private static Calendar instance = null;
+        private List<List<CalendarContent>> scuedules = new List<List<CalendarContent>>();
 
         public static Calendar Instance
         {
@@ -34,7 +35,13 @@ namespace Maeily_Windows
             InitializeComponent();
 
             CalendarLoad();
-            AddContent(1, "테스트");
+            Loaded += Calendar_Loaded;
+        }
+
+        private void Calendar_Loaded(object sender, RoutedEventArgs e)
+        {
+            scuedules.Clear();
+            scuedules = ((App)Application.Current).scheduleList;
         }
 
         private void CalendarLoad()
@@ -73,9 +80,9 @@ namespace Maeily_Windows
             }
         }
 
-        private void AddContent(int important, string contentStr)
+        private void AddContent(int important, DateTime time, string contentStr)
         {
-            CalendarContent content = new CalendarContent(1, contentStr);
+            CalendarContent content = new CalendarContent(1, time, contentStr);
 
             contents.Add(content);
 

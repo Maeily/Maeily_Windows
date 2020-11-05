@@ -39,9 +39,11 @@ namespace Maeily_Windows
 
             foreach (JObject item in jArray)
             {
-                if (item["start_date"].ToString() == dateTime.ToString("yyyyMMdd"))
+                if (item["start_date"].ToString() == dateTime.ToString("yyyy MM dd"))
                 {
-                    contents.Add(new CalendarContent(int.Parse(item["important"].ToString()), item["title"].ToString()));
+                    contents.Add(new CalendarContent(int.Parse(item["important"].ToString()),
+                        DateTime.Parse(item["start_date"].ToString()),
+                        item["title"].ToString()));
                 }
             }
 
@@ -88,7 +90,7 @@ namespace Maeily_Windows
                     MessageBox.Show("입력 칸을 채워주세요!", "메일리");
                     return;
                 }
-                CalendarContent content = new CalendarContent(important, TbContent.Text);
+                CalendarContent content = new CalendarContent(important, DateTime.UtcNow, TbContent.Text);
 
                 contents.Add(content);
 
@@ -104,8 +106,8 @@ namespace Maeily_Windows
                         {
                             channel_id = channelName,
                             title = TbContent.Text,
-                            start_date = dateTime.ToString("yyyyMMdd"),
-                            end_date = dateTime.ToString("yyyyMMdd"),
+                            start_date = dateTime.ToString("yyyy MM dd"),
+                            end_date = dateTime.ToString("yyyy MM dd"),
                             important = important
                         }));
 

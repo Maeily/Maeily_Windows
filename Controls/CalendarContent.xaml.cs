@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
@@ -9,16 +10,18 @@ namespace Maeily_Windows.Controls
     /// </summary>
     public partial class CalendarContent : UserControl
     {
-        private int important = 1;
-        private string content = string.Empty;
+        public int important = 1;
+        public string content = string.Empty;
+        public DateTime dateTime = DateTime.UtcNow;
 
-        public CalendarContent(int important, string content)
+        public CalendarContent(int important, DateTime time, string content)
         {
             InitializeComponent();
             Loaded += CalendarContent_Loaded;
 
             this.important = important;
             this.content = content;
+            this.dateTime = time;
         }
 
         private void CalendarContent_Loaded(object sender, RoutedEventArgs e)

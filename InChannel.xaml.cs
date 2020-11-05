@@ -13,9 +13,10 @@ namespace Maeily_Windows
     /// </summary>
     public partial class InChannel : Page
     {
-        private List<CalendarContent> calendars = new List<CalendarContent>();
+        private List<CalendarContent> calendars = new List<CalendarContent>();  //특정 날짜
         private DateTime dateTime = DateTime.UtcNow;
         private string channelName = string.Empty;
+        private List<CalendarContent> schedules = new List<CalendarContent>();  //모든 날짜
 
         public InChannel(string channelName)
         {
@@ -58,30 +59,44 @@ namespace Maeily_Windows
 
         private void InChannel_Loaded(object sender, RoutedEventArgs args)
         {
+            LoadCalendar();
             AddCalendar();
             RefreshDate();
         }
 
-        private void AddCalendar()
+        private void LoadCalendar()
         {
-            calendars.Clear();
-            CalendarList.ItemsSource = calendars;
-            CalendarList.Items.Refresh();
-
+            CalendarContent content = null;
             StreamReader reader = new StreamReader("Channel/Schedules/" + channelName + ".txt");
             JArray jArray = JArray.Parse(reader.ReadToEnd());
 
             foreach (JObject item in jArray)
             {
-                if (item["start_date"].ToString() == dateTime.ToString("yyyyMMdd"))
+                content = new CalendarContent(
+                    int.Parse(item["important"].ToString()),
+                    DateTime.Parse(item["start_date"].ToString()),
+                    item["title"].ToString());
+                schedules.Add(content);
+            }
+
+            ((App)Application.Current).scheduleList.Add(schedules);
+            reader.Close();
+        }
+
+        private void AddCalendar()
+        {
+            calendars.Clear();
+
+            foreach (CalendarContent item in schedules)
+            {
+                if (item.dateTime.ToString("yyyy MM dd") == dateTime.ToString("yyyy MM dd"))
                 {
-                    calendars.Add(new CalendarContent(int.Parse(item["important"].ToString()), item["title"].ToString()));
+                    calendars.Add(item);
                 }
             }
 
             CalendarList.ItemsSource = calendars;
             CalendarList.Items.Refresh();
-            reader.Close();
         }
 
         private void BtnSettings_Click(object sender, RoutedEventArgs e)
