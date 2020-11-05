@@ -17,6 +17,7 @@ namespace Maeily_Windows
         private List<CalendarContent> contents = new List<CalendarContent>();
         private DateTime dateTime = DateTime.UtcNow;
         private string channelName = string.Empty;
+        private int important;
 
         public Channel_Settings(DateTime dateTime, string channelName)
         {
@@ -40,7 +41,7 @@ namespace Maeily_Windows
             {
                 if (item["start_date"].ToString() == dateTime.ToString("yyyyMMdd"))
                 {
-                    contents.Add(new CalendarContent(1, item["title"].ToString()));
+                    contents.Add(new CalendarContent(int.Parse(item["important"].ToString()), item["title"].ToString()));
                 }
             }
 
@@ -51,15 +52,18 @@ namespace Maeily_Windows
 
         public void BtnAddContent_Click(object sender, RoutedEventArgs e)
         {
-            if (TbContent.Visibility == Visibility.Hidden)
+            if (InGroup.Visibility == Visibility.Hidden)
             {
-                TbContent.Visibility = Visibility.Visible;
+                InGroup.Visibility = Visibility.Visible;
             }
             else
             {
                 AddCalendar();
-                TbContent.Visibility = Visibility.Hidden;
+                InGroup.Visibility = Visibility.Hidden;
                 TbContent.Text = null;
+                radio1.IsChecked = false;
+                radio2.IsChecked = false;
+                radio3.IsChecked = false;
             }
         }
 
@@ -67,7 +71,24 @@ namespace Maeily_Windows
         {
             if (TbContent.Text != "")
             {
-                CalendarContent content = new CalendarContent(1, TbContent.Text);
+                if (radio1.IsChecked == true)
+                {
+                    important = 1;
+                }
+                else if (radio2.IsChecked == true)
+                {
+                    important = 2;
+                }
+                else if (radio3.IsChecked == true)
+                {
+                    important = 3;
+                }
+                else
+                {
+                    MessageBox.Show("입력 칸을 채워주세요!", "메일리");
+                    return;
+                }
+                CalendarContent content = new CalendarContent(important, TbContent.Text);
 
                 contents.Add(content);
 
@@ -84,7 +105,8 @@ namespace Maeily_Windows
                             channel_id = channelName,
                             title = TbContent.Text,
                             start_date = dateTime.ToString("yyyyMMdd"),
-                            end_date = dateTime.ToString("yyyyMMdd")
+                            end_date = dateTime.ToString("yyyyMMdd"),
+                            important = important
                         }));
 
                     reader.Close();

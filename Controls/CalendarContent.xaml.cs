@@ -23,7 +23,19 @@ namespace Maeily_Windows.Controls
 
         private void CalendarContent_Loaded(object sender, RoutedEventArgs e)
         {
-            retangle.Fill = Brushes.Red;
+            if (important == 1)
+            {
+                retangle.Fill = Brushes.Red;
+            }
+            else if (important == 2)
+            {
+                retangle.Fill = Brushes.Yellow;
+            }
+            else
+            {
+                retangle.Fill = Brushes.Green;
+            }
+
             TxtContent.Text = content;
         }
     }

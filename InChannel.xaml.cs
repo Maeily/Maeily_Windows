@@ -75,7 +75,7 @@ namespace Maeily_Windows
             {
                 if (item["start_date"].ToString() == dateTime.ToString("yyyyMMdd"))
                 {
-                    calendars.Add(new CalendarContent(1, item["title"].ToString()));
+                    calendars.Add(new CalendarContent(int.Parse(item["important"].ToString()), item["title"].ToString()));
                 }
             }
 
