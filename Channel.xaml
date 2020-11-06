@@ -11,7 +11,7 @@
         <StackPanel>
             <TextBox x:Name="TbSearch" Width="250" Style="{StaticResource StyleRoundBox}" Margin="0, 20, 0, 0" />
             <ScrollViewer VerticalScrollBarVisibility="Visible" Height="340" x:Name="ScrollView" Margin="20">
-                <UniformGrid x:Name="UGridChannel" VerticalAlignment="Stretch" Columns="2" Rows="4"></UniformGrid>
+                <UniformGrid x:Name="UGridChannel" VerticalAlignment="Stretch" Columns="2" ></UniformGrid>
             </ScrollViewer>
         </StackPanel>
         <Button x:Name="AddBtn" Height="60" Width="60" Margin="210, 400, 0, 0" Background="Transparent" BorderBrush="Transparent" Click="AddBtn_Click">
