@@ -41,7 +41,6 @@ namespace Maeily_Windows
         private void Calendar_Loaded(object sender, RoutedEventArgs e)
         {
             schedules.Clear();
-//            schedules = ((App)Application.Current).scheduleList;
             LoadSchedules();
         }
 

@@ -32,6 +32,11 @@ namespace Maeily_Windows
             LoadChannel();
         }
 
+        public List<ChannelUnit> GetChannelUnitList()
+        {
+            return channelUnitsList;
+        }
+
         public void LoadChannel()
         {
             List<ChannelUnit> channelUnits = new List<ChannelUnit>();
@@ -42,6 +47,8 @@ namespace Maeily_Windows
             bool isJoined = false;
 
             scheduleList.Clear();
+            channelsList.Clear();
+            channelUnitsList.Clear();
 
             if (directory.Exists)
             {

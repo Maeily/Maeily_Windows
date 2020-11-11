@@ -61,9 +61,10 @@ namespace Maeily_Windows
 
         private void MainLoaded(object sender, RoutedEventArgs e)
         {
-            List<ChannelUnit> channelUnits = ((App)Application.Current).channelUnitsList;
+            List<ChannelUnit> channelUnits = ((App)Application.Current).GetChannelUnitList();
             int i = 0;
 
+            Channel.Instance.UGridChannel.Children.Clear();
             ItemsChannel.Items.Clear();
             foreach (ChannelUnit item in channelUnits)
             {

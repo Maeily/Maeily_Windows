@@ -1,5 +1,5 @@
 ﻿using Maeily_Windows.Controls;
-using System.Collections.ObjectModel;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -10,7 +10,7 @@ namespace Maeily_Windows
     /// </summary>
     public partial class Channel : Page
     {
-        public ObservableCollection<ChannelUnit> channelUnits = new ObservableCollection<ChannelUnit>();
+        public List<ChannelUnit> channelUnits = new List<ChannelUnit>();
         private static Channel instance = null;
 
         public static Channel Instance
@@ -34,12 +34,16 @@ namespace Maeily_Windows
 
         private void Channel_Loaded(object sender, RoutedEventArgs e)
         {
+            Main.Instance.ItemsChannel.Items.Clear();
+
             UGridChannel.Children.Clear();
 
-//            channelUnits = ((App)Application.Current).LoadChannel("Channel");
+            ((App)Application.Current).LoadChannel();
+            channelUnits = ((App)Application.Current).GetChannelUnitList();
 
             foreach (ChannelUnit item in channelUnits)
             {
+                item.Height = 90;
                 UGridChannel.Children.Add(item);
             }
         }
