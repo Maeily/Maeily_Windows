@@ -36,7 +36,7 @@ namespace Maeily_Windows
         {
             UGridChannel.Children.Clear();
 
-            channelUnits = ((App)Application.Current).LoadChannel("Channel");
+//            channelUnits = ((App)Application.Current).LoadChannel("Channel");
 
             foreach (ChannelUnit item in channelUnits)
             {

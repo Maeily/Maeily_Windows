@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Maeily_Windows.Controls;
+using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -59,7 +61,21 @@ namespace Maeily_Windows
 
         private void MainLoaded(object sender, RoutedEventArgs e)
         {
-            ItemsChannel.ItemsSource = ((App)Application.Current).LoadChannel("Main");
+            List<ChannelUnit> channelUnits = ((App)Application.Current).channelUnitsList;
+            int i = 0;
+
+            ItemsChannel.Items.Clear();
+            foreach (ChannelUnit item in channelUnits)
+            {
+                if (i >= 4)
+                {
+                    return;
+                }
+                else
+                {
+                    ItemsChannel.Items.Add(item);
+                }
+            }
         }
 
         private void MakeMeal()

@@ -79,7 +79,7 @@ namespace Maeily_Windows
                 schedules.Add(content);
             }
 
-            ((App)Application.Current).scheduleList.Add(schedules);
+//            ((App)Application.Current).scheduleList.Add(schedules);
             reader.Close();
         }
 
