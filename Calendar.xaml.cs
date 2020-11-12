@@ -15,7 +15,9 @@ namespace Maeily_Windows
         private DateTime dateTime = DateTime.UtcNow;
         private List<CalendarContent> contents = new List<CalendarContent>();   //표시되는 일정
         private static Calendar instance = null;
-        private List<List<CalendarContent>> schedules = new List<List<CalendarContent>>();  //도든 채널의 일정
+        private Dictionary<string, List<CalendarContent>> schedules = new Dictionary<string, List<CalendarContent>>();
+
+        private Dictionary<string, List<CalendarContent>>.KeyCollection keys = null;
 
         public static Calendar Instance
         {
@@ -41,14 +43,16 @@ namespace Maeily_Windows
         private void Calendar_Loaded(object sender, RoutedEventArgs e)
         {
             schedules.Clear();
+            schedules = ((App)Application.Current).scheduleList;
+            keys = schedules.Keys;
             LoadSchedules();
         }
 
         private void LoadSchedules()
         {
-            foreach (var item in schedules)
+            foreach (var item in keys)
             {
-                foreach (CalendarContent data in item)
+                foreach (CalendarContent data in schedules[item])
                 {
                     if (data.dateTime.ToString("yyyy MM dd") ==
                         DateTime.UtcNow.ToString("yyyy MM dd"))

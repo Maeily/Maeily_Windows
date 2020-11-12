@@ -39,12 +39,10 @@ namespace Maeily_Windows
 
         public void LoadChannel()
         {
-            List<ChannelUnit> channelUnits = new List<ChannelUnit>();
             DirectoryInfo directory = new DirectoryInfo("Channel");
             FileInfo[] fileInfos = directory.GetFiles("*.txt");
             StreamReader streamReader = null;
             JArray jArray = new JArray();
-            bool isJoined = false;
 
             scheduleList.Clear();
             channelsList.Clear();
