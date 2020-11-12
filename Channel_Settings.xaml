@@ -9,14 +9,22 @@
       Title="Channel_Settings">
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="0.3*" />
             <RowDefinition Height="5*" />
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
 
-        <ListView x:Name="ListSchedules" Grid.Row="0"
-                  BorderBrush="Transparent" Margin="0, 20" />
+        <ListView x:Name="ListSchedules" Grid.Row="1" BorderBrush="Transparent" Margin="0, 5" Width="280" HorizontalAlignment="Right"/>
+        <ListView x:Name="CheckBoxList" Grid.Row="1" HorizontalAlignment="Left" Width="30" Margin="0,5" BorderBrush="Transparent"/>
 
-        <Grid Grid.Row="1">
+        <StackPanel x:Name="WorkMenu" Orientation="Horizontal">
+            <Button x:Name="DeleteButton" Grid.Row="0" Width="40" Height="20" HorizontalAlignment="Left"
+                Margin="5, 0" Background="#F5605C" Content="삭제" Click="DeleteButton_Click" BorderBrush="Transparent"/>
+            <Button x:Name="NameChangeButton" Grid.Row="0" Width="60" Height="20" HorizontalAlignment="Left"
+                Margin="5, 0" Background="#F1F1F1" Content="이름변경" Click="NameChangeButton_Click" BorderBrush="Transparent"/>
+        </StackPanel>
+        
+        <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="3*" />
                 <ColumnDefinition Width="1*" />
@@ -35,11 +43,11 @@
                     </Grid.RowDefinitions>
                     <TextBox x:Name="TbContent" Width="150" Height="20" Grid.ColumnSpan="3"
                      HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0" />
-                    <Label Grid.Row="1" Grid.Column="0" Margin="8,8,0,0">1순위</Label>
+                    <Label Grid.Row="2" Grid.Column="0" Margin="8,8,0,0">1순위</Label>
                     <RadioButton x:Name="radio1" Grid.Row="1" Grid.Column="0" Margin="50,15,0,0" />
-                    <Label Grid.Row="1" Grid.Column="1" Margin="8,8,0,0">2순위</Label>
+                    <Label Grid.Row="2" Grid.Column="1" Margin="8,8,0,0">2순위</Label>
                     <RadioButton x:Name="radio2" Grid.Row="1" Grid.Column="1" Margin="50,15,0,0" />
-                    <Label Grid.Row="1" Grid.Column="2" Margin="8,8,0,0">3순위</Label>
+                    <Label Grid.Row="2" Grid.Column="2" Margin="8,8,0,0">3순위</Label>
                     <RadioButton x:Name="radio3" Grid.Row="1" Grid.Column="2" Margin="50,15,0,0" />
                 </Grid>
             </GroupBox>

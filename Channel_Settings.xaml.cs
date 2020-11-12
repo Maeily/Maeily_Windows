@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
+using System.Windows.Data;
 
 namespace Maeily_Windows
 {
@@ -18,6 +20,7 @@ namespace Maeily_Windows
         private DateTime dateTime = DateTime.UtcNow;
         private string channelName = string.Empty;
         private int important;
+        private List<CheckBox> checkBoxes = new List<CheckBox>();
 
         public Channel_Settings(DateTime dateTime, string channelName)
         {
@@ -50,6 +53,8 @@ namespace Maeily_Windows
             ListSchedules.ItemsSource = contents;
             ListSchedules.Items.Refresh();
             reader.Close();
+
+            WorkMenuVisibility();
         }
 
         public void BtnAddContent_Click(object sender, RoutedEventArgs e)
@@ -122,10 +127,91 @@ namespace Maeily_Windows
                 ListSchedules.ItemsSource = contents;
 
                 ListSchedules.Items.Refresh();
+                DeleteButton.Visibility = Visibility.Visible;
             }
             else
             {
                 MessageBox.Show("입력 칸을 채워주세요!", "메일리");
+            }
+        }
+
+        private void NameChangeButton_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = sender as Button;
+            
+
+            if (string.Compare(button.Content.ToString(), "이름변경") == 0)
+            {
+                
+                button.Content = "완료";
+            }
+            else
+            {
+                
+
+                button.Content = "이름변경";
+            }
+        }
+
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = sender as Button;
+            if (string.Compare(button.Content.ToString(), "삭제") == 0)
+            {
+                for (int i = 0; i < ListSchedules.Items.Count; i++)
+                {
+                    checkBoxes.Add(new CheckBox
+                    {
+                        Width = 20,
+                        Height = 20,
+                        Margin = new Thickness(3)
+                    });
+                }
+                CheckBoxList.ItemsSource = checkBoxes;
+                CheckBoxList.Items.Refresh();
+                button.Content = "완료";
+            }
+            else
+            {
+                StreamReader reader = new StreamReader("Channel/Schedules/" + channelName + ".txt");
+                JArray jArray = JArray.Parse(reader.ReadToEnd());
+                reader.Close();
+
+                for (int i=0; i< ListSchedules.Items.Count; i++)
+                {
+                    if (checkBoxes[i].IsChecked == true)
+                    {
+                        contents.Remove(contents[i]);
+                        jArray.Remove(jArray[i]);
+                    }
+                }
+
+                ListSchedules.ItemsSource = contents;
+                ListSchedules.Items.Refresh();
+
+                StreamWriter writer = new StreamWriter("Channel/Schedules/" + channelName + ".txt", false);
+                writer.Write(JsonConvert.SerializeObject(jArray));
+                writer.Close();
+
+                CheckBoxList.ItemsSource = null;
+                CheckBoxList.Items.Clear();
+                CheckBoxList.Items.Refresh();
+
+                button.Content = "삭제";
+
+                WorkMenuVisibility();
+            }
+        }
+
+        private void WorkMenuVisibility()
+        {
+            if(contents.Count == 0)
+            {
+                WorkMenu.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                WorkMenu.Visibility = Visibility.Visible;
             }
         }
     }
