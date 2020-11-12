@@ -96,17 +96,35 @@ namespace Maeily_Windows
 
                 button.Click += new RoutedEventHandler((object sender, RoutedEventArgs ev) =>
                 {
+                    foreach (Button item in UGridCalendar.Children)
+                    {
+                        if (item.Tag.Equals(dateTime.Day.ToString()))
+                        {
+                            (item.Content as TextBlock).Foreground =
+                                (Brush)new BrushConverter().ConvertFrom("#000000");
+                        }
+
+                        if (item.Tag.Equals(DateTime.UtcNow.Day.ToString()))
+                        {
+                            (item.Content as TextBlock).Foreground =
+                                (Brush)new BrushConverter().ConvertFrom("#B8B8B8");
+                        }
+                    }
+
                     Calendar.Instance.dateTime =
                         Instance.dateTime.AddDays(int.Parse(textBlock.Text) - dateTime.Day);
-                    instance.LoadSchedules();
 
+                    textBlock.Foreground = (Brush)new BrushConverter().ConvertFrom("#B7DE4B");
+
+                    instance.LoadSchedules();
+                    LbTitleDate.Content = dateTime.ToString("yyyy년 MM월 dd일");
                 });
                 UGridCalendar.Children.Add(button);
 
                 if (DateTime.UtcNow.Day.ToString().Equals(i.ToString()))
                 {
                     BrushConverter brushConverter = new BrushConverter();
-                    button.Foreground = (Brush)brushConverter.ConvertFrom("#B7DE4B");
+                    button.Foreground = (Brush)brushConverter.ConvertFrom("#B8B8B8");
                 }
             }
         }
