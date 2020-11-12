@@ -16,7 +16,6 @@ namespace Maeily_Windows
         private List<CalendarContent> contents = new List<CalendarContent>();   //표시되는 일정
         private static Calendar instance = null;
         private Dictionary<string, List<CalendarContent>> schedules = new Dictionary<string, List<CalendarContent>>();
-
         private Dictionary<string, List<CalendarContent>>.KeyCollection keys = null;
 
         public static Calendar Instance
@@ -50,12 +49,17 @@ namespace Maeily_Windows
 
         private void LoadSchedules()
         {
+            contents.Clear();
+            ListContents.ItemsSource = null;
+            ListContents.Items.Clear();
+            ListContents.Items.Refresh();
+
             foreach (var item in keys)
             {
                 foreach (CalendarContent data in schedules[item])
                 {
                     if (data.dateTime.ToString("yyyy MM dd") ==
-                        DateTime.UtcNow.ToString("yyyy MM dd"))
+                        dateTime.ToString("yyyy MM dd"))
                     {
                         AddContent(data);
                     }
@@ -89,6 +93,15 @@ namespace Maeily_Windows
                 };
                 textBlock.FontWeight = FontWeights.Bold;
                 button.Content = textBlock;
+
+                button.Click += new RoutedEventHandler((object sender, RoutedEventArgs ev) =>
+                {
+                    Calendar.Instance.dateTime =
+                        Instance.dateTime.AddDays(int.Parse(textBlock.Text) - dateTime.Day);
+                    instance.LoadSchedules();
+
+                    MessageBox.Show(dateTime.Day.ToString());
+                });
                 UGridCalendar.Children.Add(button);
 
                 if (DateTime.UtcNow.Day.ToString().Equals(i.ToString()))
