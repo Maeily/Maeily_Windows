@@ -100,7 +100,6 @@ namespace Maeily_Windows
                         Instance.dateTime.AddDays(int.Parse(textBlock.Text) - dateTime.Day);
                     instance.LoadSchedules();
 
-                    MessageBox.Show(dateTime.Day.ToString());
                 });
                 UGridCalendar.Children.Add(button);
 
