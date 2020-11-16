@@ -194,6 +194,7 @@ namespace Maeily_Windows
                 CheckBoxList.Items.Refresh();
 
                 button.Content = "삭제";
+                reader.Close();
 
                 WorkMenuVisibility();
             }
