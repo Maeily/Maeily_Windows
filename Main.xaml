@@ -21,7 +21,7 @@
                         </ItemsPanelTemplate>
                     </ItemsControl.ItemsPanel>
                 </ItemsControl>
-                <StackPanel Background="#F1F1F1" Height="150" Width="240" Margin="15">
+                <StackPanel Background="#F1F1F1" Height="160" Width="240" Margin="15,5">
                     <StackPanel Orientation="Horizontal">
                         <Button x:Name="Lbutton" Background="Transparent" BorderBrush="Transparent" Width="50" Margin="20, 0" Click="LeftButtonClick">
                             <Polygon Points="10,10,20,3,20,17" Fill="#B7DE4B" Margin="-20,0" />
@@ -31,7 +31,7 @@
                             <Polygon Points="10,3,10,17,20,10" Fill="#B7DE4B" />
                         </Button>
                     </StackPanel>
-                    <StackPanel x:Name="meal" Background="White" Width="220" Height="100">
+                    <StackPanel x:Name="meal" Background="White" Width="220" Height="110">
                     </StackPanel>
                 </StackPanel>
             </StackPanel>
