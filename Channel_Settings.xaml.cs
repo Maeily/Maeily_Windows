@@ -6,8 +6,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
-using System.Windows.Data;
 
 namespace Maeily_Windows
 {
@@ -122,6 +120,8 @@ namespace Maeily_Windows
 
                     writer.Write(JsonConvert.SerializeObject(jArray));
                     writer.Close();
+
+                    ((App)Application.Current).LoadChannel();
                 }
 
                 ListSchedules.ItemsSource = contents;
@@ -138,17 +138,13 @@ namespace Maeily_Windows
         private void NameChangeButton_Click(object sender, RoutedEventArgs e)
         {
             Button button = sender as Button;
-            
 
             if (string.Compare(button.Content.ToString(), "이름변경") == 0)
             {
-                
                 button.Content = "완료";
             }
             else
             {
-                
-
                 button.Content = "이름변경";
             }
         }
@@ -177,7 +173,7 @@ namespace Maeily_Windows
                 JArray jArray = JArray.Parse(reader.ReadToEnd());
                 reader.Close();
 
-                for (int i=0; i< ListSchedules.Items.Count; i++)
+                for (int i = 0; i < ListSchedules.Items.Count; i++)
                 {
                     if (checkBoxes[i].IsChecked == true)
                     {
@@ -205,7 +201,7 @@ namespace Maeily_Windows
 
         private void WorkMenuVisibility()
         {
-            if(contents.Count == 0)
+            if (contents.Count == 0)
             {
                 WorkMenu.Visibility = Visibility.Hidden;
             }
