@@ -13,5 +13,11 @@
                        FontWeight="Bold" TextTrimming="CharacterEllipsis" Margin="5" Panel.ZIndex="5" />
             <Image x:Name="ImgChannelImage" Stretch="Fill" Panel.ZIndex="1" />
         </Grid>
+        <Button.ContextMenu>
+            <ContextMenu>
+                <MenuItem Header="삭제" Click="Delete_MenuItem_Click"/>
+                <MenuItem Header="이름변경" Click="NameChange_MenuItem_Click"/>
+            </ContextMenu>
+        </Button.ContextMenu>
     </Button>
 </UserControl>

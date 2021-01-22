@@ -32,7 +32,7 @@ namespace Maeily_Windows
             Loaded += Channel_Loaded;
         }
 
-        private void Channel_Loaded(object sender, RoutedEventArgs e)
+        public void Channel_Loaded(object sender, RoutedEventArgs e)
         {
             Main.Instance.ItemsChannel.Items.Clear();
 

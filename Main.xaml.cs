@@ -59,7 +59,7 @@ namespace Maeily_Windows
             }
         }
 
-        private void MainLoaded(object sender, RoutedEventArgs e)
+        public void MainLoaded(object sender, RoutedEventArgs e)
         {
             List<ChannelUnit> channelUnits = ((App)Application.Current).GetChannelUnitList();
             int i = 0;

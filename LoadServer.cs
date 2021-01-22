@@ -1,23 +1,29 @@
-﻿using Newtonsoft.Json.Linq;
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Data;
+using System.Data.SqlClient;
+using System.Windows;
 using System.IO;
 using System.Net;
-using System.Windows;
+using Newtonsoft.Json.Linq;
 
 namespace Maeily_Windows
 {
-    internal class LoadMeal
+    internal class LoadServer
     {
-        public static LoadMeal loadMeal = null;
-        private string targetURL = string.Empty;
+        public static LoadServer loadServer = null;
+        private string targetURL;
 
-        public LoadMeal(string targetURL)
+        public LoadServer(string URL)
         {
-            if(loadMeal == null)
+            if(loadServer == null)
             {
-                loadMeal = this;
+                loadServer = this;
             }
-            this.targetURL = targetURL;
+            targetURL = URL;
         }
 
         public string CallWebClient()
@@ -49,7 +55,7 @@ namespace Maeily_Windows
             return result;
         }
 
-        public string GetMeal(int time)
+        public string ConnectDB()
         {
             string str = CallWebClient();
             JObject jObject;
@@ -64,7 +70,7 @@ namespace Maeily_Windows
             }
 
             var a = jObject["mealServiceDietInfo"][1];
-            var b = a["row"][time].SelectToken("DDISH_NM");
+            var b = a["row"].SelectToken("DDISH_NM");
             return b.ToString().Replace("<br/>", Environment.NewLine);
         }
     }

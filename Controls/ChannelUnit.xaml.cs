@@ -28,6 +28,7 @@ namespace Maeily_Windows.Controls
         {
             StreamReader reader = new StreamReader("Channel/UserList/" + channelName + ".txt");
             JArray jArray = JArray.Parse(reader.ReadToEnd());
+            reader.Close();
 
             foreach (JObject item in jArray)
             {
@@ -93,6 +94,31 @@ namespace Maeily_Windows.Controls
             }
 
             return result;
+        }
+
+        private void Delete_MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            FileInfo fileInfo;
+
+            fileInfo = new FileInfo(@"Channel/" + channelName + ".txt");
+            fileInfo.Delete();
+
+            fileInfo = new FileInfo(@"Channel/Resources/" + channelName + ".jpg");
+            fileInfo.Delete();
+
+            fileInfo = new FileInfo(@"Channel/Schedules/" + channelName + ".txt");
+            fileInfo.Delete();
+
+            fileInfo = new FileInfo(@"Channel/UserList/" + channelName + ".txt");
+            fileInfo.Delete();
+
+            Channel.Instance.Channel_Loaded(sender, e);
+            Main.Instance.MainLoaded(sender, e);
+        }
+
+        private void NameChange_MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

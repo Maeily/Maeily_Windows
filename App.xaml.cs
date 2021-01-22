@@ -61,6 +61,7 @@ namespace Maeily_Windows
 
                     streamReader = new StreamReader("Channel/Schedules/" + item.Name);
                     jArray = JArray.Parse(streamReader.ReadToEnd());
+                    streamReader.Close();
 
                     foreach (JObject data in jArray)
                     {
